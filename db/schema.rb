@@ -10,13 +10,41 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_07_085248) do
+ActiveRecord::Schema.define(version: 2020_07_07_121015) do
+
+  create_table "board_comments", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "board_id"
+    t.text "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "board_tags", force: :cascade do |t|
+    t.integer "board_id"
+    t.integer "tag_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "boards", force: :cascade do |t|
     t.integer "user_id"
     t.string "title"
     t.text "introduction"
     t.integer "image_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "bookmraks", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "board_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
