@@ -19,10 +19,10 @@ Rails.application.routes.draw do
       get 'followers' => 'relationships#followed', as: 'followers'
     end
   
-    resource :board_tags,only[:create,:destroy]
+    resource :board_tags, only: [:create,:destroy]
     resources :boards
     resources :tags
-    resources :inquiries,only[:new,:create]
+    resources :inquiries, only: [:new,:create]
   end
 
 end

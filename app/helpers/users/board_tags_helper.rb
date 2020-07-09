@@ -1,0 +1,2 @@
+module Users::BoardTagsHelper
+end
