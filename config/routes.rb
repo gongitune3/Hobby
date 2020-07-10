@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
+  root 'users/homes#top'
+
   #管理者側root
   namespace :admin do
     root 'homes#top'
@@ -11,7 +13,7 @@ Rails.application.routes.draw do
   #ユーザー側root
   namespace :user do
     resources :users,only: [:show,:index,:edit,:update] do
-      root 'home#top'
+      # root 'home#top'
       resource :favorites, only: [:create,:destroy]
       resources :board_comments, only: [:create,:destroy]
       resources :bookmraks, only: [:create,:destroy]
