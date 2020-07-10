@@ -12,4 +12,19 @@ class User < ApplicationRecord
   has_many :followed, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy 
   has_many :following_user, through: :follower, source: :followed
   has_many :follower_user, through: :followed, source: :follower
+
+  #フォロー時に使用
+  def follow(user_id)
+    follower.create(followed_id: user_id)
+  end
+  
+  #フォローを解除する際に使用
+  def unfollow(user_id)
+    follower.find_by(followed_id: user_id).destroy
+  end
+  
+  #フォローされているか否かの確認
+  def following?(user)
+    following_user.include?(user)
+  end
 end
