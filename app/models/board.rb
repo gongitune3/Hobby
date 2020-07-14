@@ -6,7 +6,7 @@ class Board < ApplicationRecord
     has_many :board_tags, dependent: :destroy
     #--タグ機能--
 
-    has_many :bookmraks, despendent: :destroy
+    has_many :bookmraks, dependent: :destroy
     belongs_to :user
 
     def save_posts(savepost_tags)
