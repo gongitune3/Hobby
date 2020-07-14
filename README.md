@@ -19,6 +19,17 @@
 
 ## 設計書
   テーブル定義書
+  https://docs.google.com/spreadsheets/d/1Xuev5iGCqF1bQ7JmOAb_sdpgEr6C_ZoeXng6ZPWgeUI/edit#gid=2007891421
+
+  詳細設計
+  https://docs.google.com/spreadsheets/d/124puX4AHwNPCo-yCHJb7QBf9wNnZg1R_P_oX3mDCuEE/edit?usp=sharing
+
+  ER図
+  https://app.diagrams.net/#G1uqV5_yiVZtpzNGU8qcpUFeNaV1V-ZKFs
+
+  ワイヤーフレーム
+  https://drive.google.com/file/d/17Jr0kJs2j25_b-9JMAUYPPcwuHA77J78/view?usp=sharing
+
   <https://docs.google.com/spreadsheets/d/1Xuev5iGCqF1bQ7JmOAb_sdpgEr6C_ZoeXng6ZPWgeUI/edit#gid=2007891421>
 
   詳細設計
@@ -29,6 +40,7 @@
 
   ワイヤーフレーム
   <https://drive.google.com/file/d/17Jr0kJs2j25_b-9JMAUYPPcwuHA77J78/view?usp=sharing>
+
 ### 機能一覧
   <https://docs.google.com/spreadsheets/d/1UgK-6l38k5T81XjcTIn7CHnGRkB_sBXS5xQWAVhWmks/edit#gid=0>
 
