@@ -6,14 +6,14 @@ Rails.application.routes.draw do
   root 'users/homes#top'
 
   #管理者側root
-  namespace :admin do
+  namespace :admins do
     root 'homes#top'
   end
 
   #ユーザー側root
-  namespace :user do
+  namespace :users do
     resources :users,only: [:show,:index,:edit,:update] do
-      # root 'home#top'
+      root 'home#top'
       resource :favorites, only: [:create,:destroy]
       resources :board_comments, only: [:create,:destroy]
       resources :bookmraks, only: [:create,:destroy]
