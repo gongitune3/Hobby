@@ -4,15 +4,19 @@ class Users::BoardsController < ApplicationController
         @board = Board.new
     end
     
+    def index
+        @boards = Board.all
+    end
+
+    def show
+        @board = Board.find(params[:id])
+    end
 
     def create
         @board = Board.new(board_params)
+        @board.user_id = current_user.id
         @board.save
-        redirect_to @board
-        tag_list = params[:tag_name].split(",")
-        if  @board.save
-            @board.save_ boards(tag_list)
-        end
+        redirect_to users_board_path(@board.id)
     end
     
     

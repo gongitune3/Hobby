@@ -11,10 +11,10 @@
                         <%= f.label :introduction, '紹介分' %>
                         <%= f.text_field :introduction %>
                     </div>
-                    <div class="form-inline">
-                        <%= form.label :tag %>
-                        <%= form.text_field :name, value: @tag_list %>
-                    </div>
+                    <%# <div class="form-inline">
+                        <%= f.label :tag %>
+                        <%# <%= f.text_field :name %>
+                    <%# </div> %>
                 <%= f.submit "送信" %>
             <% end %>
         </div>
