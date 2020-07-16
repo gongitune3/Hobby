@@ -8,10 +8,10 @@ class Users::BoardsController < ApplicationController
     def create
         @board = Board.new(board_params)
         @board.save
-        redirect_to("/")
+        redirect_to @board
         tag_list = params[:tag_name].split(",")
-        if  @post.save
-            @post.save_posts(tag_list)
+        if  @board.save
+            @board.save_ boards(tag_list)
         end
     end
     

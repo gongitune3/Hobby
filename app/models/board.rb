@@ -9,15 +9,15 @@ class Board < ApplicationRecord
     has_many :bookmraks, dependent: :destroy
     belongs_to :user
 
-    def save_posts(savepost_tags)
+    def save_boards(saveboard_tags)
         current_tags = self.tags.pluck(:name) unless self.tags.nil?
-        old_tags = current_tags - savepost_tags
+        old_tags = current_tags - saveboard_tags
         new_tags = savepost_tags - current_tags
 
         # Destroy old taggings:
-            old_tags.each do |old_name|
+          old_tags.each do |old_name|
             self.tags.delete Tag.find_by(name:old_name)
-        end
+          end
         # Create new taggings:
           new_tags.each do |new_name|
             post_tag = Tag.find_or_create_by(name:new_name)
