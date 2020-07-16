@@ -6,8 +6,14 @@ class Board < ApplicationRecord
     has_many :board_tags, dependent: :destroy
     #--タグ機能--
 
-    has_many :bookmraks, dependent: :destroy
+    has_many :bookmarks, dependent: :destroy
     belongs_to :user
+
+
+    def bookmark_by?(user)
+      bookmarks.where(user_id: user.id).exists?
+    end
+
 
     def save_boards(saveboard_tags)
         current_tags = self.tags.pluck(:name) unless self.tags.nil?

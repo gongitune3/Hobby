@@ -4,7 +4,8 @@ class User < ApplicationRecord
   devise  :database_authenticatable, :registerable,
           :recoverable, :rememberable, :validatable
   has_many :boards, dependent: :destroy
-  has_many :bookmraks, dependent: :destroy
+  has_many :bookmarks, dependent: :destroy
+  has_many :bookmark_boards, through: :bookmarks, source: :board
   has_many :board_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
 
@@ -27,4 +28,7 @@ class User < ApplicationRecord
   def following?(user)
     following_user.include?(user)
   end
+
+  def bookmark_map?(board)
+    self.id == board.user_id
 end

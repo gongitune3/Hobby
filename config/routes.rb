@@ -16,13 +16,16 @@ Rails.application.routes.draw do
       root 'home#top'
       resource :favorites, only: [:create,:destroy]
       resources :board_comments, only: [:create,:destroy]
-      resources :bookmraks, only: [:create,:destroy]
+      resources :boards, shallow: true do
+        resource :bookmarks, only: %i[create destroy]
+        get :bookmarks, on: :collection #意味が分からない
+      end
+      
       get 'follows' => 'relationships#follower', as: 'follows'
       get 'followers' => 'relationships#followed', as: 'followers'
     end
   
     resource :board_tags, only: [:create,:destroy]
-    resources :boards
     resources :tags
     resources :inquiries, only: [:new,:create]
   end
