@@ -31,4 +31,6 @@ class User < ApplicationRecord
 
   def bookmark_map?(board)
     self.id == board.user_id
+  end
+  
 end

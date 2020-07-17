@@ -2,6 +2,11 @@
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
             <h2><%= @board.title %></h2>
+            <% if board.bookmark_by?(current_user) %>
+                <%= link_to users_board_bookmarks_path  %>
+            <% else %>
+                <%= link_to users_board_bookmarks_path  %>
+            <% end %>
         </div>
     </div>
 </div>

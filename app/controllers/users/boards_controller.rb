@@ -5,13 +5,13 @@ class Users::BoardsController < ApplicationController
     end
     
     def index
-        @boards = Board.all.includes(:user).recent
+        @boards = Board.all.includes(:user)
     end
 
     def bookmarks
-        @boards = current_user.bookmark_boards.includes(:user).recent
+        @boards = current_user.bookmark_boards.includes(:user)
     end
-    
+
     def show
         @board = Board.find(params[:id])
     end

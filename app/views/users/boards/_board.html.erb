@@ -1,10 +1,12 @@
-<% if current_user.bookmark_maps(board) %>
+<% if current_user.bookmark_map?(board) %>
   <div style='display: inline; float: right;'>
-    <%= link_to icon('fas', 'pen'), edit_board_path(board), id: :"button-edit-#{board.id}" %>
-    <%= link_to icon('fas', 'trash-alt'), board_path(board), id: :"button-delete-#{board.id}",method: :delete, data: { confirm: '削除してよろしいですか？' } %>
+  <li  aria-hidden="true">
+    <%= link_to "削除する", edit_users_board_path(board), class: 'fas fa-trash-alt' %>
+  </li>
+    <%= link_to users_board_path(board) %>
   </div>
 <% else %>
   <div style='display: inline; float: right;'>
-     <%= render 'boards/bookmark_area', board: board %>
+    <%= render 'boards/bookmark_area', board: board %>
   </div>
-<% end %>
+<% end %> 
