@@ -1,5 +1,6 @@
 class Users::BookmarksController < ApplicationController
     def create
+        
         bookmark = current_user.bookmarks.build(board_id: params[:board_id])
         bookmark.save!
         redirect_to users_boards_path, success: t('.flash.bookmark')
@@ -10,4 +11,6 @@ class Users::BookmarksController < ApplicationController
         redirect_to boards_path, success: t('.flash.not_bookmark')
     end
 
+    def index
+    end
 end

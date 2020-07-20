@@ -6,6 +6,10 @@ class Users::UsersController < ApplicationController
         @user = User.find(params[:id])
     end
     
+    def index
+        @users = User.page(params[:page]).reverse_order
+    end
+
     private
 	  	def user_params
 		 	params.require(:user).permit(:nickname, :introduction, :profile_image)

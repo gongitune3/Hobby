@@ -1,0 +1,35 @@
+ <div class="col-md-8">
+            <table class='table'>
+                <tr>
+                    <%= attachment_image_tag(@user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg") %>
+                </tr>
+                <tr>
+                    <%= @user.nickname %>
+                </tr>
+                <tr>
+                    <%= @user.introduction %>
+                <tr>
+                <tr>
+                    <th>follows</th>
+                    <th><%= link_to @user.follower.count, users_user_follows_path(@user) %></th>
+                </tr>
+                <tr>
+                    <th>followers</th>
+                    <th><%= link_to @user.followed.count, users_user_followers_path(@user) %></th>
+                </tr>
+            </div>
+        </div>
+        <!-- フォローボタン -->
+            <% if current_user != user %>
+                <% if current_user.following?(user) %>
+                    <%= link_to 'フォロー外す', users_user_relationships_path(user.id), method: :delete, class: "btn btn-primary" %>
+                <% else %>
+                    <%= link_to 'フォローする', users_user_relationships_path(user.id), method: :POST, class: "btn btn-success" %>
+                <% end %>
+            <% end %>
+    </div>
+    <% if @user == current_user %>
+        <div class='row'>
+            <%= link_to '編集',edit_users_user_path(@user),class: "col-xs-6 col-md-offset-4 btn btn-default glyphicon glyphicon-wrench" %>
+        </div>
+    <% end %>

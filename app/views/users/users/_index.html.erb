@@ -1,0 +1,22 @@
+<table class='table'>
+    <thead>
+        <tr>
+            <th>プロフ画像</th>
+            <th>ハンドルネーム</th>
+            <th colspan="3"></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <% users.each do |user| %>
+            <tr>
+                <%# <td><%= attachment_image_tag(user, :profile_image, :fill, 50, 50, fallback: "no-image.jpg") %></td> %>
+                <td><%= user.nickname %></td>
+                <td>フォロー数：<%= user.follower.count %></td>
+                <td>フォロワー数：<%= user.followed.count %></td>
+                <td><%= link_to "詳細ページ",users_user_path(user.id) %></td>
+            </tr>
+        <% end %>
+        <%# <%= paginate @post_images %> %>
+    </tbody>
+</table>

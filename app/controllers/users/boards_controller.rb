@@ -6,8 +6,7 @@ class Users::BoardsController < ApplicationController
     end
     
     def index
-        @boards = Board.all.includes(:user)
-        
+        @boards = Board.page(params[:page]).reverse_order.includes(:user)
     end
 
     def bookmarks

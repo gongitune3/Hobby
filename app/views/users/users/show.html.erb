@@ -5,16 +5,6 @@
         </div>
     </div>
     <div class="rwo">
-    <%# 以下部分テンプレート予定 %>
-        <div class="col-md-8">
-            <%= attachment_image_tag(@user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg") %>            
-            <%= @user.nickname %>
-            <%= @user.introduction %>
-        </div>
+        <%= render 'info', user: @user %>
     </div>
-    <% if @user == current_user %>
-        <div class='row'>
-            <%= link_to '編集',edit_users_user_path(@user),class: "col-xs-6 col-md-offset-4 btn btn-default glyphicon glyphicon-wrench" %>
-        </div>
-    <% end %>
 </div>

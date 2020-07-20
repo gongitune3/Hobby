@@ -14,6 +14,10 @@ class User < ApplicationRecord
   has_many :following_user, through: :follower, source: :followed
   has_many :follower_user, through: :followed, source: :follower
 
+  scope :perfect_search, -> (nickname, method) { where(nickname: nickname) if method == 'perfect' }
+  scope :forward_search, -> (nickname, method) { where('nickname LIKE ?', nickname+'%') if method == 'forward' }
+  scope :backward_search, -> (nickname, method) { where('nickname LIKE ?', '%'+nickname) if method == 'backward' }
+  scope :partial_search, -> (nickname, method) { where('nickname LIKE ?', '%'+nickname+'%') if method == 'partial' }
 
   attachment :profile_image
 

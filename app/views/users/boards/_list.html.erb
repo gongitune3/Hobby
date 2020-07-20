@@ -1,6 +1,8 @@
- <% boards.each do |board| %>
+<% boards.each do |board| %>
                 <%= link_to board.title, users_board_path(board.id) %>
-                    <%= board.tags.name %>
+                    <% board.tags.each do |tag| %>
+                        <%= tag.name %>
+                    <% end %>
                 <% if current_user.bookmark_map?(board) %>
                     <li  aria-hidden="true">
                         <%= link_to " 編集する", edit_users_board_path(board), class: 'fas fa-trash-alt' %>
@@ -10,3 +12,4 @@
                     </li>
                 <% end %> 
 <% end %>
+<%= paginate boards %>
