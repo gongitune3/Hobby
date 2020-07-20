@@ -14,6 +14,9 @@ class User < ApplicationRecord
   has_many :following_user, through: :follower, source: :followed
   has_many :follower_user, through: :followed, source: :follower
 
+
+  attachment :profile_image
+
   #フォロー時に使用
   def follow(user_id)
     follower.create(followed_id: user_id)
@@ -28,6 +31,7 @@ class User < ApplicationRecord
   def following?(user)
     following_user.include?(user)
   end
+
 
   def bookmark_map?(board)
     self.id == board.user_id

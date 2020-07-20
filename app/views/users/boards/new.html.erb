@@ -11,10 +11,10 @@
                         <%= f.label :introduction, '紹介分' %>
                         <%= f.text_field :introduction %>
                     </div>
-                    <%# <div class="form-inline">
-                        <%= f.label :tag %>
-                        <%# <%= f.text_field :name %>
-                    <%# </div> %>
+                        <%= f.fields_for :tag_list, @board.tags.build do |tag| %>
+                            <%= f.label :name, 'タグ入力  ,で区切って入力してください' %>
+                            <%= tag.text_field :name %>
+                        <% end %>
                 <%= f.submit "送信" %>
             <% end %>
         </div>

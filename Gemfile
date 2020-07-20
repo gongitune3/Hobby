@@ -81,3 +81,7 @@ group :production do
 end
 
 gem 'font-awesome-sass'
+
+gem 'jquery-ui-rails'
+
+gem 'pry-rails'

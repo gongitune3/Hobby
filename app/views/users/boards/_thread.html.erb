@@ -1,0 +1,16 @@
+<% board_comments.each do |board_comment| %> 
+    <table>
+        <tr>
+            <td>
+                <%= link_to users_user_path(board_comment.user), class: "user_#{board_comment.user.id}" do %>
+                    <%= attachment_image_tag board_comment.user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg", size: "50x50" %><br>
+                    <%= board_comment.user.nickname %>
+                <% end %>
+            </td>
+            <td><%= board_comment.comment %></td>
+                <% if board_comment.user == current_user %>
+                    <td><%= link_to '削除', users_board_comment_path(board_comment), class: 'btn-sm btn-danger', method: :delete, remote: true %></td>
+                <% end %>
+        </tr>
+    </table>
+<% end %>

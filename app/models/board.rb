@@ -2,32 +2,36 @@ class Board < ApplicationRecord
     has_many :board_comments, dependent: :destroy
 
     #--タグ機能中間テーブル--
-    has_many :tags, through: :board_tags
     has_many :board_tags, dependent: :destroy
-    #--タグ機能--
+    has_many :tags, through: :board_tags
+    accepts_nested_attributes_for :tags
+
 
     has_many :bookmarks, dependent: :destroy
     belongs_to :user
 
-
+    #いいね機能と同様にメソッドの引数にログインユーザーを与えて、ブックマークの外部キーが存在しているか確認している。
     def bookmark_by?(user)
       bookmarks.where(user_id: user.id).exists?
     end
 
 
-    def save_boards(saveboard_tags)
-        current_tags = self.tags.pluck(:name) unless self.tags.nil?
-        old_tags = current_tags - saveboard_tags
-        new_tags = savepost_tags - current_tags
-
-        # Destroy old taggings:
-          old_tags.each do |old_name|
-            self.tags.delete Tag.find_by(name:old_name)
-          end
-        # Create new taggings:
-          new_tags.each do |new_name|
-            post_tag = Tag.find_or_create_by(name:new_name)
-            self.tags << post_tag
-          end
+    #タグテーブルから名前を全て配列として取得。古いものと新しいものに仕分け
+    def save_tags(tags) 
+      current_tags = self.tags.pluck(:name) unless self.tags.nil? #unless→タグが
+      old_tags = current_tags - tags
+      new_tags = tags - current_tags
+  
+      #配列で取得した重複している名前の削除
+      old_tags.each do |old_name|
+        self.tags.delete Tag.find_by(name:old_name)
+      end
+      
+      #配列で取得した重複している名前の削除
+      new_tags.each do |new_name|
+        board_tag = Tag.find_or_create_by(name:new_name)
+        self.tags << board_tag #saveに近い？配列に挿入している。
+      end
+      
     end
 end

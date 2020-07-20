@@ -2,10 +2,40 @@
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
             <h2><%= @board.title %></h2>
-            <% if board.bookmark_by?(current_user) %>
-                <%= link_to users_board_bookmarks_path  %>
+            <% @tags.each do |tag| %>
+                <%= link_to tag.name, users_boards_path %>
+            <% end %>
+
+            <% if @board.user_id = current_user %>
+                <%= link_to edit_users_board_path(@board.id), remote: true do %>
+                    <i class="fas fa-edit">編集</i>
+                <% end %>
+            <% end %>
+            <% if @board.bookmark_by?(current_user) %>
+                <%= link_to users_board_bookmarks_path(@board.id), method: :delete, remote: true do %>
+                    <span class="fas fa-bookmark"><%= @board.bookmarks.count %></span>
+                <% end %>
             <% else %>
-                <%= link_to users_board_bookmarks_path  %>
+                <%= link_to users_board_bookmarks_path(@board.id), method: :post, remote: true do %>
+                    <span class="far fa-bookmark-empty"><%= @board.bookmarks.count %></span>
+                <% end %>
+            <% end %>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-5 col-md-offset-3">
+            <p><%= @board.introduction %></p>
+        </div>
+    </div>
+    <div class="row">
+        <%= render 'thread', board_comments: @board.board_comments %>
+    </div>
+    
+    <div class="row">
+        <div class="comment-form">
+            <%= form_with model:[@board, @board_comment], url: users_board_board_comments_path(@board.id), local: true, method: :post do |f| %>
+                <%= f.text_area :comment, size: "60x5" %>
+                <%= f.submit '送信' %>
             <% end %>
         </div>
     </div>

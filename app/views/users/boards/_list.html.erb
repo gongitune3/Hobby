@@ -1,0 +1,12 @@
+ <% boards.each do |board| %>
+                <%= link_to board.title, users_board_path(board.id) %>
+                    <%= board.tags.name %>
+                <% if current_user.bookmark_map?(board) %>
+                    <li  aria-hidden="true">
+                        <%= link_to " 編集する", edit_users_board_path(board), class: 'fas fa-trash-alt' %>
+                    </li>
+                    <li aria-hidden="true">
+                        <%= link_to " 削除する", users_board_path(board), class: 'far fa-edit' %>
+                    </li>
+                <% end %> 
+<% end %>
