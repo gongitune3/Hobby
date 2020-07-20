@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-light" style=“height: 100px; ”>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -71,7 +71,7 @@
               </li>
         </ul>
       <% end %>
-      <%= form_with url: users_search_path, method: :get, remote: false, class: "form-inline my-2 my-lg-0" do %>
+      <%= form_with url: users_search_path, method: :get, local: true, class: "form-inline my-2 my-lg-0" do %>
         <%= text_field_tag 'search[content]' %>
         <%= select_tag 'search[model]', options_for_select({ "User" => "user", "Board" => "board" }) %>
         <%= select_tag 'search[method]', options_for_select({ "完全一致" => "perfect", "前方一致" => "forward", "後方一致" => "backward", "部分一致" => "partial" }) %>
