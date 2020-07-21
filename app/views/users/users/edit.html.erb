@@ -1,0 +1,48 @@
+    <div class="row">
+        <%# <%= render '/layouts/errors', obj: @user %>
+        <div class="col-xs-7 .offset-md-3">
+            <h3>登録情報編集</h3>
+        </div>
+    </div>
+        <div class="row">
+        <div class="col-xs-7 .offset-md-3">
+            <table class="table">
+                <%= form_with model: @user, url: users_user_path(@user), local: :true, method: :patch do |f| %>
+                    <tr>
+                        <th>
+                            <p>ハンドルネーム</p>
+                        </th>
+                        <td>
+                            <%= f.text_field :nickname %>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <p>自己紹介</p>
+                        </th>
+                        <td>
+                            <%= f.text_area :introduction %>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <p>プロフ画像</p>
+                        </th>
+                        <td>
+                            <%= f.attachment_field :profile_image %>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p class="btn btn-secondary">
+                                <%= f.submit "編集内容を保存する" %>
+                            </p>
+                        </td>
+                    </tr>
+                    <% end %>
+            </table>
+            <div class="delete">
+                <%# <%= link_to  "退会する", customer_helf_path, class: "btn btn-danger pull-right" %> %>
+            </div>
+        </div>
+    </div>

@@ -1,15 +1,32 @@
-<div class="container">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-2 col-md-offset-1">
+            <h3>スレッド・ブックマークランキング</h3>
+            <% @all_ranks.each_with_index do |bookmark, i| %>
+                    <%= i + 1 %>位
+                    <%# <%= link_to bookmark.title, users_bookmarks_path do %> %>
+                    <%= bookmark.introduction %>
+                    <%= bookmark.bookmarks.count %>
+            <% end %>
+            <h3>スレッド・タグ名一覧</h3>
+            <%# <% @random.each do |tag| %>
+                <%# <%= link_to tag.name, users_tags_path  %>
+            <%# <% end %> %> %> %>
+        </div>
+    
+        <div class="col-md-8">
             <h1>Hobbyへようこそ！</h1>
             <p>ここは知識を浅く広く取得する場所になっております。<br>
                暇な時に軽い気持ちでご使用ください。。。<br>
                また性善説で成り立っておりますのでその点もご配慮頂ければと思います。<br>
+               またスレッドの作成、コメント投稿等に関してはログインが必要です。ご理解ください_(┐「ε:)_<br>
                ※目に余る事がありましたらこちらまで。。
             </p>
         </div>
-        <div class="col-md-2">
-            <%= link_to "スレッド新規作成", new_users_board_path %>
+    </div>
+    <div class="row">
+        <div class="col-md-3 col-md-offset-6">
+        <% if user_signed_in? %>
+                <%= link_to "スレッド新規作成", new_users_board_path %>
+        <% end %>
         </div>
     </div>
-</div>

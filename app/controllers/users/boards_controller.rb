@@ -9,8 +9,13 @@ class Users::BoardsController < ApplicationController
         @boards = Board.page(params[:page]).reverse_order.includes(:user)
     end
 
+    #Userモデルでhas many throughを定義したことにより、current_user.bookmark_boardsでデータを取得できる。
     def bookmarks
         @boards = current_user.bookmark_boards.includes(:user)
+    end
+
+    def tag
+
     end
 
     def show
@@ -19,6 +24,7 @@ class Users::BoardsController < ApplicationController
 	      @board_comments = @board.board_comments
         @boards = Board.all
         @tags = @board.tags
+        @users = @board.board_comments.users
     end
 
     # def create
@@ -56,9 +62,14 @@ class Users::BoardsController < ApplicationController
         else
           render 
         end
-
       end
     
+      def destroy
+        @board = Board.find(params[:id])
+        @board..destroy
+        redirect_to root_path
+      end
+
     private
     def board_params
         params.require(:board).permit(:user_id, :introduction, :title, :image)

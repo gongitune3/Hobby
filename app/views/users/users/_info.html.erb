@@ -1,21 +1,25 @@
  <div class="col-md-8">
             <table class='table'>
                 <tr>
-                    <%= attachment_image_tag(@user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg") %>
+                    <%= attachment_image_tag(user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg") %>
                 </tr>
                 <tr>
-                    <%= @user.nickname %>
+                    <%= user.nickname %>
                 </tr>
                 <tr>
-                    <%= @user.introduction %>
+                    <%= user.introduction %>
                 <tr>
                 <tr>
                     <th>follows</th>
-                    <th><%= link_to @user.follower.count, users_user_follows_path(@user) %></th>
+                    <th><%= link_to user.follower.count, users_user_follows_path(user) %></th>
                 </tr>
                 <tr>
                     <th>followers</th>
-                    <th><%= link_to @user.followed.count, users_user_followers_path(@user) %></th>
+                    <th><%= link_to user.followed.count, users_user_followers_path(user) %></th>
+                </tr>
+                <tr>
+                    <th>bookmarks</th>
+                    <th><%= link_to user.bookmarks.count, users_bookmarks_path %></th>
                 </tr>
             </div>
         </div>

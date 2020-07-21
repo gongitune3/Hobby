@@ -1,15 +1,16 @@
 <% boards.each do |board| %>
-                <%= link_to board.title, users_board_path(board.id) %>
-                    <% board.tags.each do |tag| %>
-                        <%= tag.name %>
-                    <% end %>
-                <% if current_user.bookmark_map?(board) %>
-                    <li  aria-hidden="true">
-                        <%= link_to " 編集する", edit_users_board_path(board), class: 'fas fa-trash-alt' %>
-                    </li>
-                    <li aria-hidden="true">
-                        <%= link_to " 削除する", users_board_path(board), class: 'far fa-edit' %>
-                    </li>
-                <% end %> 
+    <%= link_to board.title, users_board_path(board.id) %>
+        <% board.tags.each do |tag| %>
+            <%= tag.name %>
+        <% end %>
+    <% if current_user.bookmark_map?(board) %>
+        <%= link_to users_board_bookmarks_path(board), method: :delete, remote: true do %>
+            <span class="fas fa-bookmark"><%= board.bookmarks.count %></span>
+        <% end %>
+    <% else %>
+        <%= link_to users_board_bookmarks_path(board), method: :post, remote: true do %>
+            <span class="fas fa-bookmark"><%= board.bookmarks.count %></span>
+        <% end %>
+    <% end %> 
 <% end %>
 <%= paginate boards %>

@@ -1,16 +1,17 @@
 class Users::TagsController < ApplicationController
     def inedx
         @tags = Tag.all
+        @boards = 
     end
 
-    def create
-        tag = Tag.new(tag_params)
-        tag.save
-    end
+    # def create
+    #     tag = Tag.new(tag_params)
+    #     tag.save
+    # end
 
-    def destroy
+    # def destroy
 
-    end
+    # end
     private
     def tag_params
         params.require(:board).permit(:board_id, :name)
