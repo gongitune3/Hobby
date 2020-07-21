@@ -5,6 +5,7 @@ class User < ApplicationRecord
           :recoverable, :rememberable, :validatable
   has_many :boards, dependent: :destroy
   has_many :bookmarks, dependent: :destroy
+  #throughオプションでユーザーがブックマークしたスレッドを直接アソシエーションで取得
   has_many :bookmark_boards, through: :bookmarks, source: :board
   has_many :board_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
@@ -36,9 +37,8 @@ class User < ApplicationRecord
     following_user.include?(user)
   end
 
-
-  def bookmark_map?(board)
-    self.id == board.user_id
+  def bookmark_map?(user)
+    bookmarks.where(user_id: user.id).exists?
   end
-  
+
 end

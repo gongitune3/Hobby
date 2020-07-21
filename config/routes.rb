@@ -27,6 +27,7 @@ Rails.application.routes.draw do
       get 'followers' => 'relationships#followed', as: 'followers'
     end
 
+    get 'tags' => 'boards#tag'
     get 'bookmarks' => 'boards#bookmark'
     resources :boards, shallow: true do
       resource :bookmarks, only: [:create,:destroy]

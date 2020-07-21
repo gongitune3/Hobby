@@ -10,12 +10,13 @@ class Users::BoardsController < ApplicationController
     end
 
     #Userモデルでhas many throughを定義したことにより、current_user.bookmark_boardsでデータを取得できる。
-    def bookmarks
+    def bookmark
         @boards = current_user.bookmark_boards.includes(:user)
     end
 
     def tag
-
+        @ids = BoardTag.joins(:tag).where("tags.name=?",params[:tag]).pluck(:board_id)
+        @boards = Board.find(@ids)
     end
 
     def show
@@ -24,15 +25,8 @@ class Users::BoardsController < ApplicationController
 	      @board_comments = @board.board_comments
         @boards = Board.all
         @tags = @board.tags
-        @users = @board.board_comments.users
+        # @users = @board.board_comments.users
     end
-
-    # def create
-    #     @board = Board.new(board_params)
-    #     @board.user_id = current_user.id
-    #     @board.save
-    #     redirect_to users_board_path(@board.id)
-    # end
     
     def create
         @board= current_user.boards.build(board_params)

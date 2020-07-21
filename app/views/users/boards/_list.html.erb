@@ -1,16 +1,33 @@
-<% boards.each do |board| %>
-    <%= link_to board.title, users_board_path(board.id) %>
-        <% board.tags.each do |tag| %>
-            <%= tag.name %>
-        <% end %>
-    <% if current_user.bookmark_map?(board) %>
-        <%= link_to users_board_bookmarks_path(board), method: :delete, remote: true do %>
-            <span class="fas fa-bookmark"><%= board.bookmarks.count %></span>
-        <% end %>
-    <% else %>
-        <%= link_to users_board_bookmarks_path(board), method: :post, remote: true do %>
-            <span class="fas fa-bookmark"><%= board.bookmarks.count %></span>
-        <% end %>
-    <% end %> 
-<% end %>
-<%= paginate boards %>
+<table class="table">
+            <thead class="thead-dark">
+                    <tr><th>スレタイ</th><th>タグ</th><th>about</th><th>ブックマーク数</th></tr>
+            </thead>
+            <% boards.each do |board| %>
+                <tr>
+                    <td>
+                        <%= link_to board.title, users_board_path(board.id) %>
+                    </td>
+                    <td>
+                        <% board.tags.each do |tag| %>
+                                <%= tag.name %>
+                            <% end %>
+                    </td>
+                    <td>
+                        <%= board.introduction %>
+                    </td>
+                    <td>
+                        <% if current_user.bookmark_map?(board) %>
+                            <%= link_to users_board_bookmarks_path(board), method: :delete, local: true do %>
+                                <span class="fas fa-bookmark"><%= board.bookmarks.count %></span>
+                            <% end %>
+                        <% else %>
+                            <%= link_to users_board_bookmarks_path(board), method: :post, local: true do %>
+                                <span class="far fa-bookmark"><%= board.bookmarks.count %></span>
+                            <% end %>
+                        <% end %> 
+                    </td>
+                </tr>
+            <% end %>
+            <%# <%= paginate boards %> %>
+
+</table>

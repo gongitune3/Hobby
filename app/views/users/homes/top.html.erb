@@ -8,9 +8,9 @@
                     <%= bookmark.bookmarks.count %>
             <% end %>
             <h3>スレッド・タグ名一覧</h3>
-            <%# <% @random.each do |tag| %>
-                <%# <%= link_to tag.name, users_tags_path  %>
-            <%# <% end %> %> %> %>
+            <% @random.each do |tag| %>
+                <%= link_to tag.name, users_tags_path(tag: tag.name) %>
+            <% end %>
         </div>
     
         <div class="col-md-8">
