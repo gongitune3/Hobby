@@ -1,10 +1,17 @@
 <div class="container">
     <div class="rwo">
-        <div class="col-md-6 col-md-offset-1">
-            <h3>マイページ</h3>
+        <div class="col-md-7 col-md-offset-1">
+            <h3>ユーザーページ</h3>
         </div>
     </div>
     <div class="rwo">
         <%= render 'info', user: @user %>
     </div>
+    <% if current_user.id == @user.id %>
+        <div class="row">
+            <div class="col-md-7 col-md-offset-1">
+                <h4>おすすめユーザー</h4>
+            </div>
+        </div>
+    <% end %>
 </div>

@@ -1,14 +1,15 @@
  <div class="col-md-8">
             <table class='table'>
                 <tr>
-                    <%= attachment_image_tag(user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg") %>
+                    <%= attachment_image_tag user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg", class: "rounded-circle" %>
                 </tr>
                 <tr>
-                    <%= user.nickname %>
+                    <i>ハンドルネーム：</i><%= user.nickname %>
                 </tr>
                 <tr>
+                    <p>自己紹介</p>
                     <%= user.introduction %>
-                <tr>
+                </tr>
                 <tr>
                     <th>follows</th>
                     <th><%= link_to user.follower.count, users_user_follows_path(user) %></th>
@@ -21,7 +22,7 @@
                     <th>bookmarks</th>
                     <th><%= link_to user.bookmarks.count, users_bookmarks_path %></th>
                 </tr>
-            </div>
+            </table>
         </div>
         <!-- フォローボタン -->
             <% if current_user != user %>

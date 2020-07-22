@@ -17,3 +17,5 @@ module Hobby
     # the framework and any gems in your application.
   end
 end
+
+Refile.secret_key = '3870821f45afd45a21436c32508439c891174f90ad1051156858ecf3af46aa9c099ffa05624b9ab0b60166bd27f55e3aa5b18c9ccf2dc66083a649a5010da5d7'

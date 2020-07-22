@@ -3,8 +3,7 @@
             <h3>スレッド・ブックマークランキング</h3>
             <% @all_ranks.each_with_index do |bookmark, i| %>
                     <%= i + 1 %>位
-                    <%# <%= link_to bookmark.title, users_bookmarks_path do %> %>
-                    <%= bookmark.introduction %>
+                    <%= link_to bookmark.title, users_board_path(bookmark.id) %>
                     <%= bookmark.bookmarks.count %>
             <% end %>
             <h3>スレッド・タグ名一覧</h3>

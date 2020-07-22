@@ -31,7 +31,6 @@ class Users::BoardsController < ApplicationController
     def create
         @board= current_user.boards.build(board_params)
         tags = params[:board][:tag_list][:name].split(",")
-
         if @board.save
             @board.save_tags(tags)
             flash[:success] = "記事を作成しました"
@@ -43,7 +42,6 @@ class Users::BoardsController < ApplicationController
       
       def edit
         @board= Board.find(params[:id])
-        @tag_list = @board.tag.pluck(:name).join(",")
       end
       
       def update
