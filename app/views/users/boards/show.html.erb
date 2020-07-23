@@ -5,7 +5,7 @@
                 <%= link_to tag.name, users_boards_path %>
             <% end %>
 
-            <% if @board.user_id = current_user %>
+            <% if @board.user_id = current_user.id %>
                 <%= link_to edit_users_board_path(@board.id), local: true do %>
                     <i class="fas fa-edit">編集</i>
                 <% end %>
@@ -66,6 +66,9 @@
     </div>
     <div class="row">
         <div class="col-md-5 .offset-md-4">
+            <div class="scroll_button">
+                <a id="scroll_top" href="#">ページTOPへ戻る</a>
+            </div>
             <%# 実装未定 %>
             <%# <%= link_to "スレッド参加ユーザー一覧", path %>
         </div>

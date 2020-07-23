@@ -22,9 +22,13 @@
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
 
-// body {
-//     background: linear-gradient(to right, #5d4157 0%, #a8caba 100%);  
-// }
+body {
+    background-color: ＃F4F5F7;
+}
+
+footer {
+    background: linear-gradient(-135deg, #E4A972, #9941D8);
+}
 
 .fix {
     height: 50px;

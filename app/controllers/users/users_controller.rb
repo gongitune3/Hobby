@@ -3,19 +3,18 @@ class Users::UsersController < ApplicationController
 	before_action :screen_user, only: [:edit, :update]
 
     def show
-        
         @user = User.find(params[:id])
-        #ユーザーおすすめ機能、カレントユーザーのコメントを取得
-        
-        # 自分のコメントを取得
+        # ユーザーおすすめ機能、
+        # 自身がコメントした板に紐づくタグと同様のタグをもつ板にコメントしているユーザーを取得する
+
+        # 1/自分のコメントを取得
         comments = @user.board_comments
-        # 自分がコメントしたボードのidを取得
-        # boards = Board.find(comments.pluck(:board_id).uniq)
-        boards = Board.where(id: comments.pluck(:board_id))
+        # 2/自分がコメントした板の情報をコメントのidを元に取得
+        boards = Board.where(id: comments.pluck(:board_id)).distinct
         
-        # 自分がコメントしたボードのidから中間テーブルを参照し、紐づくタグのidを取得これに合致する複数のboard_idを取得。
-        # board_ids = BoardTag.where(tag_id: boards.board_tags.pluck(:tag_id).pluck(:board_id)
-        byebug
+        # 3/自分がコメントしたボードのidから中間テーブルを参照しtag_idsを定義し配列に代入？紐づくタグidを取得。
+        # board_ids = BoardTag.where(tag_id: boards.board_tags.pluck(:tag_id).pluck(:board_id))
+
         tag_ids = []
         boards.each do |board|
             board.board_tags.each do |board_tag|
@@ -23,15 +22,19 @@ class Users::UsersController < ApplicationController
                 #tag_ids.push(board_tag.id)
             end
         end
-        #[1,2,3]
-        # board_tags = BoardTag.where(tag_id: boards.board_tags.pluck(:tag_id))
-        #board_tags = BoardTag.where(tag_id: tag_ids.uniq)
+        board_tags = BoardTag.where(tag_id: tag_ids).distinct
+        # board_tags = BoardTag.where(tag_id: boards.board_tags.pluck(:tag_id))        
 
-        #
-        board_ids = board_tags.pluck(:board_id)
-        # そこに紐づくコメントしているユーザーを取ってきたい
-        byebug
-        # @Recommended
+        # 5/ 4を行った上で関連している板のidを検索。
+        board_ids = board_tags.pluck(:board_id).uniq
+        # 6/ idを持っているコメントを抽出
+        board_comments = BoardComment.where(board_id: board_ids)        
+        # 7/ コメントからユーザーの情報を取得 
+        users = []
+        board_comments.each do |board_comment|
+            users << board_comment.user
+        end
+        @recommended = users.uniq.take(3)
     end
     
     def index
