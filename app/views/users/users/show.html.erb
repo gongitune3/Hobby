@@ -7,9 +7,9 @@
     <div class="rwo">
         <%= render 'info', user: @user %>
     </div>
-    <% if current_user.id == @user.id %>
         <div class="row">
-            <div class="col-md-7 col-md-offset-1">
+            <% if current_user.id == @user.id %>
+            <div class="col-md-4 col-md-offset-1">
                 <h4>おすすめユーザー</h4>
                 <table class='table'>
                     <% @recommended.each do |user| %>
@@ -24,6 +24,18 @@
                     <% end %>
                 </table>
             </div>
+        <% end %>
+        <div class="col-md-5 offset-md-2">
+        <p>ユーザー直近コメント→→スレッド</p>
+            <table class="table table-borderless">
+                <tr>
+                    <td>
+                        <% @order_boards.each do |board| %>
+                            <%= link_to board.title, users_board_path(board.id) %>
+                        <% end %>
+                    </td>
+                </tr>
+            </table>
         </div>
-    <% end %>
+    </div>
 </div>

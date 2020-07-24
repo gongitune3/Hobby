@@ -22,14 +22,28 @@
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
 
-body {
-    background-color: ＃F4F5F7;
+.groundimage {
+    background-image: url("/asesets/images/spikes.png");
+    background-size: cover;
 }
 
 footer {
-    background: linear-gradient(-135deg, #E4A972, #9941D8);
+    background: linear-gradient(-135deg, #E3E3E3 ,#5D6874);
+    height: 100px;
 }
+
+.copyright {
+    padding: 30px;
+}
+
+ul {
+    list-style: none;
+  }
 
 .fix {
     height: 50px;
+}
+
+.board-introduction {
+    margin: 20px 0 20px 0;
 }

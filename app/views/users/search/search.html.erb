@@ -3,9 +3,9 @@
         <h3>ユーザー検索結果 '<%= @content %>'</h3>
         <%= render 'users/users/index', users: @records %>
     </div>
-<% else @model == 'books' %>
+<% elsif @model == 'board' %>
     <div class="row">
         <h3>スレッド検索結果 '<%= @content %>'</h3>
-        <%= render 'boards/index', boards: @records %>
+        <%= render 'users/boards/list', boards: @records %>
     </div>
 <% end %>

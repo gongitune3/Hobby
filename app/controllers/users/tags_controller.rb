@@ -1,7 +1,6 @@
 class Users::TagsController < ApplicationController
     def inedx
         @tags = Tag.all
-        @boards = 
     end
 
     # def create

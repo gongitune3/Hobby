@@ -85,3 +85,7 @@ gem 'font-awesome-sass'
 gem 'jquery-ui-rails'
 
 gem 'pry-rails'
+
+gem 'rails-i18n'
+gem 'devise-i18n'
+gem 'devise-i18n-views'

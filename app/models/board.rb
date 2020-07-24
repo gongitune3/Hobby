@@ -9,12 +9,13 @@ class Board < ApplicationRecord
 
     has_many :bookmarks, dependent: :destroy
     belongs_to :user
+    validates :title, presence: true
+    validates :introduction, presence: true
 
     #いいね機能と同様にメソッドの引数にログインユーザーを与えて、ブックマークの外部キーが存在しているか確認している。
     def bookmark_by?(user)
       bookmarks.where(user_id: user.id).exists?
     end
-
 
     #タグテーブルから名前を全て配列として取得。古いものと新しいものに仕分け
     def save_tags(tags) 
@@ -27,7 +28,7 @@ class Board < ApplicationRecord
         self.tags.delete Tag.find_by(name:old_name)
       end
       
-      #配列で取得した重複している名前の削除
+      #配列で取得し、レコードに存在するデータは探して・なければ作成その上でself.tagsに挿入
       new_tags.each do |new_name|
         board_tag = Tag.find_or_create_by(name:new_name)
         self.tags << board_tag #saveに近い？配列に挿入している。

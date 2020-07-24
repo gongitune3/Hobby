@@ -15,14 +15,25 @@ class Users::SearchController < ApplicationController
                   .partial_search(content, method)
         elsif model == 'board'
           if method == 'perfect'
-            Book.where(title: content)
+            Board.where(title: content)
           elsif method == 'forward'
-            Book.where('title LIKE ?', content+'%')
+            Board.where('title LIKE ?', content+'%')
           elsif method == 'backward'
-            Book.where('title LIKE ?', '%'+content)
+            Board.where('title LIKE ?', '%'+content)
           else
-            Book.where('title LIKE ?', '%'+content+'%')
+            Board.where('title LIKE ?', '%'+content+'%')
           end
         end
+        # elsif model == 'tag'
+        #   if method == 'perfect'
+        #     Tag.where(name: content)
+        #   elsif method == 'forward'
+        #     Tag.where('name LIKE ?', content+'%')
+        #   elsif method == 'backward'
+        #     Tag.where('name LIKE ?', '%'+content)
+        #   else
+        #     Tag.where('name LIKE ?', '%'+content+'%')
+        #   end
+        # end
       end
 end

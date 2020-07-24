@@ -1,0 +1,14 @@
+a:
+  activerecord:
+    models:
+        user: user
+        board: スレッド
+        board_comment: コメント
+    attributes:
+      board:
+        title: タイトル
+        introduction: 紹介文
+      board_comment:
+        comment: コメント
+      user:
+        nickname: ハンドルネーム

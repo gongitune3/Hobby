@@ -16,18 +16,22 @@
                         <%= board.introduction %>
                     </td>
                     <td>
-                        <% if board.bookmark_by?(current_user) %>
-                            <%= link_to users_board_bookmarks_path(board.id), method: :delete, remote: true do %>
-                                <span class="fas fa-bookmark"><%= board.bookmarks.count %></span>
+                        <% if user_signed_in? %>
+                            <% if board.bookmark_by?(current_user) %>
+                                <%= link_to users_board_bookmarks_path(board.id), method: :delete, remote: true do %>
+                                    <span class="fas fa-bookmark"><%= board.bookmarks.count %></span>
+                                <% end %>
+                            <% else %>
+                                <%= link_to users_board_bookmarks_path(board.id), method: :post, remote: true do %>
+                                    <span class="far fa-bookmark-empty"><%= board.bookmarks.count %></span>
+                                <% end %>
                             <% end %>
                         <% else %>
-                            <%= link_to users_board_bookmarks_path(board.id), method: :post, remote: true do %>
-                                <span class="far fa-bookmark-empty"><%= board.bookmarks.count %></span>
-                            <% end %>
+                            <span class="fas fa-bookmark"><%= board.bookmarks.count %></span>
                         <% end %>
                     </td>
                 </tr>
             <% end %>
-            <%# <%= paginate boards %> %>
+            <%# <%= paginate boards %>
 
 </table>
