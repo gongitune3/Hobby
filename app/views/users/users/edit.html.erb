@@ -39,7 +39,7 @@
                     </tr>
                     <% end %>
             </table>
-            <div class="delete">
+            <%# <div class="delete">
                 <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal1">
                     退会
                 </button>
@@ -60,12 +60,12 @@
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">キャンセル</button>
                                     <%= link_to users_board_path(@board.id), method: :delete, remote: true do %>
-                                        <button type="button" class="btn btn-danger">削除</button>
+                                        <%# <button type="button" class="btn btn-danger">削除</button>
                                     <% end %>
-                                </div>
+                                <%# </div>
                             </div>
                         </div>
                         </div>
-            </div>
+            </div> %> 
         </div>
     </div>

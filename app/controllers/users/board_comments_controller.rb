@@ -14,14 +14,10 @@ class Users::BoardCommentsController < ApplicationController
         end
     end
     
-    #使用を考え中
     def destroy
-        # @board_comment = BoardComment.find(params[:id])
-        # if @board_comment.user != current_user
-        #     redirect_to request.referer
-        # end
-        # @boardk_comment.destroy
-        # redirect_to request.referer
+        board_comment = BoardComment.find(params[:id])
+        board_comment.destroy
+        redirect_to request.referer
     end
 
     private

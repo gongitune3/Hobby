@@ -58,7 +58,7 @@ class Users::BoardsController < ApplicationController
     
       def destroy
         @board = Board.find(params[:id])
-        @board..destroy
+        @board.destroy
         redirect_to root_path
       end
 

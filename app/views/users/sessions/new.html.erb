@@ -1,26 +1,37 @@
-<h2>ログイン画面</h2>
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 offset-4">
+      <h2>ログイン画面</h2>
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "ログイン" %>
   </div>
-<% end %>
+  <div class="row">
+    <div class="col-md-5 offset-3">
+                <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+                <%= render "users/shared/error_messages", resource: resource %>
+                  <div class="form-group">
+                    <div class="field">
+                      <%= f.label :ハンドルネーム %><br />
+                      <%= f.email_field :nickname, autofocus: true, autocomplete: "current-password", :class => 'form-control password' %>
+                    </div>
 
-<%= render "users/shared/links" %>
+                    <div class="field">
+                      <%= f.label :password %><br />
+                      <%= f.password_field :password, autocomplete: "current-password", :class => 'form-control' %>
+                    </div>
+
+                    <% if devise_mapping.rememberable? %>
+                      <div class="field">
+                        <%= f.check_box :remember_me %>
+                        <%= f.label :remember_me %>
+                      </div>
+                    <% end %>
+
+                    <div class="actions">
+                      <%= f.submit "ログイン", class: "btn btn-primary" %>
+                    </div>
+                  </div>
+                <% end %>
+                <%= render "users/shared/links" %>
+    </div>
+  </div>
+</div>

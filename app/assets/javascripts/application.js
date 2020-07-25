@@ -21,3 +21,34 @@
 
 //= require popper
 //= require bootstrap-sprockets
+
+$(document).ready(function(){
+    // hide #back-top first
+    $("#back-top").hide();
+    // fade in #back-top
+    $(function () {
+        $(window).scroll(function () {
+            if ($(this).scrollTop() > 500) {
+                $('#back-top').fadeIn();
+            } else {
+                $('#back-top').stop(true, true).fadeOut();
+            }
+        });
+        // scroll body to 0px on click
+        $('#back-top a').click(function () {
+            $('body,html').animate({
+                scrollTop: 0
+            }, 500);
+            return false;
+        });
+    });
+
+    $('.bottom-btn').click(function(){      
+        var id = $(this).attr('href');
+        var position = $(id).offset().top;
+        $('html, body').animate({
+        'scrollTop': position
+        }, 1000);
+    });
+});
+

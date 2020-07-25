@@ -12,7 +12,7 @@
                     </td>
                     <td><%= board_comment.comment %></td>
                         <% if board_comment.user == current_user %>
-                            <td><%= link_to '削除', users_board_comment_path(board_comment), class: 'btn-sm btn-danger', method: :delete, remote: true %></td>
+                            <td><%= link_to '削除', users_board_comment_path(board_comment), class: 'btn-sm btn-danger', method: :delete, local: true %></td>
                         <% end %>
                     <td>
                         <% if user_signed_in? %>

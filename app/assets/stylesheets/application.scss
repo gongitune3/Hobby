@@ -47,3 +47,9 @@ ul {
 .board-introduction {
     margin: 20px 0 20px 0;
 }
+
+.table {
+    table-layout: fixed;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+}

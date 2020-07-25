@@ -1,12 +1,14 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top p-4 ">
+<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top p-4 " style="background: linear-gradient(-135deg, #5D6874 ,#E3E3E3);">
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <% if user_signed_in? %>
         <ul class="navbar-nav mr-auto">
-          <p class="nav-item active">
-            <%= link_to "ロゴ",root_path %>
-          </p>
-              <li class="nav-item dropdown">
+          <li>
+            <%= link_to root_path do %>
+              <p>Hobby</p>
+            <% end %>
+          </li>
+              <li class="nav navbar-nav navbar-left">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   MENU
                 </a>
@@ -75,11 +77,11 @@
         </ul>
       <% end %>
       <%= form_with url: users_search_path, method: :get, local: true, class: "form-inline my-2 my-lg-0 justify-content-center" do %>
-        <div class="form-inline" style="text-align: center;">
-          <%= text_field_tag 'search[content]' %>
-          <%= select_tag 'search[model]', options_for_select({ "User" => "user", "スレッド" => "board" }) %>
-          <%= select_tag 'search[method]', options_for_select({ "完全一致" => "perfect", "前方一致" => "forward", "後方一致" => "backward", "部分一致" => "partial" }) %>
-          <%= submit_tag '検索' %>
+        <div class="form-inline">
+          <%= text_field_tag 'search[content]', '', class: 'form-control' %>
+          <%= select_tag 'search[model]', options_for_select({ "User" => "user", "スレッド" => "board" }), class: "custom-select" %>
+          <%= select_tag 'search[method]', options_for_select({ "完全一致" => "perfect", "前方一致" => "forward", "後方一致" => "backward", "部分一致" => "partial" }), class: "custom-select" %>
+          <%= submit_tag '検索', class: "btn btn-default" %>
         </div>
       <% end %>
   </div>

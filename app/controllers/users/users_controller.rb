@@ -30,14 +30,30 @@ class Users::UsersController < ApplicationController
 
         # 5/ 4を行った上で関連している板のidを検索。
         board_ids = board_tags.pluck(:board_id).uniq
+        
+        # //自分を例外にする処理
+        user_comments_ids = []
+        current_user.board_comments.each do |user|
+            user_comments_ids << user.id
+        end
+        
         # 6/ idを持っているコメントを抽出
-        board_comments = BoardComment.where(board_id: board_ids)        
-        # 7/ コメントからユーザーの情報を取得 
+        board_comments = BoardComment.where.not(id: user_comments_ids).where(board_id: board_ids)
+        # 7/ コメントからユーザーの情報を取得
         users = []
         board_comments.each do |board_comment|
             users << board_comment.user
         end
-        @recommended = users.uniq.take(3)
+        @recommended = users.uniq.shuffle.take(3)
+        
+        # a = []
+        # recommende.each do |r|
+        #     if current_user.id =! r.id
+        #         a << r
+        #     end
+        # end
+
+        # @recommended = a
     end
     
     def index
