@@ -5,7 +5,7 @@ class User < ApplicationRecord
           :recoverable, :rememberable, :validatable
   has_many :boards, dependent: :destroy
   has_many :bookmarks, dependent: :destroy
-  #throughオプションでユーザーがブックマークしたスレッドを直接アソシエーションで取得
+  #throughオプションでユーザーがブックマークしたスレッドを直接アソシエーションで取得可能
   has_many :bookmark_boards, through: :bookmarks, source: :board
   has_many :board_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
@@ -14,6 +14,9 @@ class User < ApplicationRecord
   has_many :followed, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy 
   has_many :following_user, through: :follower, source: :followed
   has_many :follower_user, through: :followed, source: :follower
+
+  # (case_sensitive: :falssは大文字小文字の区別をしないということ）
+  validates :nickname,uniqueness: { case_sensitive: :false }
 
   scope :perfect_search, -> (nickname, method) { where(nickname: nickname) if method == 'perfect' }
   scope :forward_search, -> (nickname, method) { where('nickname LIKE ?', nickname+'%') if method == 'forward' }
