@@ -3,12 +3,8 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <% if user_signed_in? %>
         <ul class="navbar-nav mr-auto">
-          <li>
-            <%= link_to root_path do %>
-              <p>Hobby</p>
-            <% end %>
-          </li>
-              <li class="nav navbar-nav navbar-left">
+            <%= link_to image_tag("toplog2.png",:width => "50",:height => "50"), root_path %>
+              <li class="nav navbar-nav navbar-left ml-5">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   MENU
                 </a>
@@ -54,9 +50,9 @@
       <% else %>
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <%= link_to "ロゴ",root_path %>
+            <%= link_to image_tag("toplog.png",:width => "50",:height => "50"), root_path %>
           </li>
-              <li class="nav-item dropdown">
+              <li class="nav-item dropdown ml-5">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   MENU
                 </a>
