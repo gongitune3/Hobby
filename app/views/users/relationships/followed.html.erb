@@ -3,6 +3,9 @@
     <% if @users.count > 0 %>
       <%= render 'users/users/index', users: @users %>
     <% else %>
-      <p>ユーザーはいません</p>
+      <div class="row">
+        <div class="col-md-6 offset-1 m-5"></div>
+        <p>ユーザーはいません......</p>
+    </div>
     <% end %>
 </div>
