@@ -10,12 +10,12 @@
                 <%= render "users/shared/error_messages", resource: resource %>
                   <div class="form-group">
                     <div class="field">
-                      <%= f.label :ハンドルネーム %><br />
-                      <%= f.text_field :nickname, :class => 'form-control' %>
+                      <%= f.label :ハンドルネーム, class: "mt-4" %><br />
+                      <%= f.text_field :nickname, class: "form-control" %>
                     </div>
                     <div class="field">
-                      <%= f.label :password %><br />
-                      <%= f.password_field :password, autocomplete: "current-password", :class => 'form-control' %>
+                      <%= f.label :password, class: "mt-4" %><br />
+                      <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
                     </div>
                     <% if devise_mapping.rememberable? %>
                       <div class="field">

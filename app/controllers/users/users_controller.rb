@@ -69,7 +69,6 @@ class Users::UsersController < ApplicationController
         if @user.update(user_params)
             redirect_to users_user_path(@user), notice: "更新完了"
         else
-            @user = User.find(params[:id])
             render 'users/users/edit'
         end
     end

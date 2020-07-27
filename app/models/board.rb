@@ -1,4 +1,5 @@
 class Board < ApplicationRecord
+    belongs_to :user
     has_many :board_comments, dependent: :destroy
 
     #--タグ機能中間テーブル--
@@ -6,11 +7,12 @@ class Board < ApplicationRecord
     has_many :tags, through: :board_tags
     accepts_nested_attributes_for :tags
 
-
     has_many :bookmarks, dependent: :destroy
-    belongs_to :user
-    validates :title, presence: true
-    validates :introduction, presence: true
+    validates :title, presence: true, length: { maximum: 33 } 
+    validates :introduction, presence: true, length: { maximum: 53 }
+    
+
+
 
     #いいね機能と同様にメソッドの引数にログインユーザーを与えて、ブックマークの外部キーが存在しているか確認している。
     def bookmark_by?(user)
@@ -35,4 +37,13 @@ class Board < ApplicationRecord
       end
       
     end
+
+    private
+    def products_number
+      errors.add(:products, "を1つ以上指定して下さい") if products.size < 1
+      errors.add(:products, "は32個までです") if products.size > 32
+    end
+
 end
+
+

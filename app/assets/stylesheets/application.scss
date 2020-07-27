@@ -38,7 +38,7 @@ footer {
 
 ul {
     list-style: none;
-  }
+    margin-right: auto;}
 
 .fix {
     height: 50px;
@@ -48,8 +48,14 @@ ul {
     margin: 20px 0 20px 0;
 }
 
+// 文字調整の為
 .table {
     table-layout: fixed;
     overflow-wrap: break-word;
     word-wrap: break-word;
 }
+
+#error_explanation {
+    color: red;
+    font-family: 'GenJyuuGothicX';
+    }

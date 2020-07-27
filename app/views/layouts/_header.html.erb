@@ -3,11 +3,12 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <% if user_signed_in? %>
         <ul class="navbar-nav mr-auto">
-            <%= link_to image_tag("toplog2.png",:width => "50",:height => "50"), root_path %>
-              <li class="nav navbar-nav navbar-left ml-5">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  MENU
-                </a>
+        <li class="nav-item active">
+        </li>
+            <li class="nav-item dropdown ml-4">
+              <a class="nav-link dropdown-toggle h4" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                MENU
+              </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <ul>
                     <li class="nav-item">
@@ -22,10 +23,17 @@
                     <li>
                       <%= link_to "ログアウトする", destroy_user_session_path, method: :delete %>
                     </li>
+                    </li>
                   </ul>
                 </div>
-              </li>
+            </li>
         </ul>
+         <ul class="mx-auto">
+          <li>
+            <%= link_to image_tag("logo.png",:width => "200",:height => "60"), root_path %>
+          </li>
+        </ul>
+      
       <% elsif admin_signed_in? %>
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
@@ -50,10 +58,9 @@
       <% else %>
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <%= link_to image_tag("toplog.png",:width => "50",:height => "50"), root_path %>
           </li>
               <li class="nav-item dropdown ml-5">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link dropdown-toggle h4" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   MENU
                 </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -71,11 +78,16 @@
                   </div>
               </li>
         </ul>
+        <ul class="mx-auto">
+          <li>
+            <%= link_to image_tag("logo.png",:width => "200",:height => "60"), root_path %>
+          </li>
+        </ul>
       <% end %>
       <%= form_with url: users_search_path, method: :get, local: true, class: "form-inline my-2 my-lg-0 justify-content-center" do %>
         <div class="form-inline">
-          <%= text_field_tag 'search[content]', '', class: 'form-control' %>
-          <%= select_tag 'search[model]', options_for_select({ "User" => "user", "スレッド" => "board" }), class: "custom-select" %>
+          <%= text_field_tag 'search[content]', '', class: 'form-control mr-3' %>
+          <%= select_tag 'search[model]', options_for_select({ "User" => "user", "スレッド" => "board", "tag" => "tag" }), class: "custom-select" %>
           <%= select_tag 'search[method]', options_for_select({ "完全一致" => "perfect", "前方一致" => "forward", "後方一致" => "backward", "部分一致" => "partial" }), class: "custom-select" %>
           <%= submit_tag '検索', class: "btn btn-default" %>
         </div>

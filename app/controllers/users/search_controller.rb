@@ -23,6 +23,16 @@ class Users::SearchController < ApplicationController
           else
             Board.where('title LIKE ?', '%'+content+'%')
           end
+        elsif model == 'tag'
+          if method == 'perfect'
+            Tag.where(name: content)
+          elsif method == 'forward'
+            Tag.where('title LIKE ?', content+'%')
+          elsif method == 'backward'
+            Tag.where('title LIKE ?', '%'+content)
+          else
+            Tag.where('title LIKE ?', '%'+content+'%')
+          end
         end
         # elsif model == 'tag'
         #   if method == 'perfect'

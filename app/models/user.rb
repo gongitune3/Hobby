@@ -16,7 +16,7 @@ class User < ApplicationRecord
   has_many :follower_user, through: :followed, source: :follower
 
   # (case_sensitive: :falssは大文字小文字の区別をしないということ）
-  validates :nickname,uniqueness: { case_sensitive: :false }
+  validates :nickname,uniqueness: { case_sensitive: :false }, presence: true
 
   scope :perfect_search, -> (nickname, method) { where(nickname: nickname) if method == 'perfect' }
   scope :forward_search, -> (nickname, method) { where('nickname LIKE ?', nickname+'%') if method == 'forward' }

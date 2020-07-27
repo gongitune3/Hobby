@@ -2,21 +2,22 @@
    <div class="row">
         <div class="col-md-6 offset-3">
             <h2>スレッド新規作成画面</h2>
+            <%= render '/layouts/errors', obj: @board %>
         </div>
     </div>
     <div class="row">
         <div class="col-md-5 offset-3">
             <%= form_with model: @board, url: users_boards_path, local: :true do |f| %>
                 <div class="form-group">
-                        <%= f.label :title, 'タイトル' %><br />
+                        <%= f.label :title, 'タイトル', :class => 'mt-2' %><br />
                         <%= f.text_field :title, :class => 'form-control' %>
                     
-                        <%= f.label :introduction, '紹介分' %><br />
+                        <%= f.label :introduction, '紹介分', :class => 'mt-4' %><br />
                         <%= f.text_area :introduction, :class => 'form-control' %>
                     
                         <%= f.fields_for :tag_list, @board.tags.build do |tag| %>
-                            <%= f.label :name, 'タグ入力  ,で区切って入力してください' %><br />
-                            <%= tag.text_field :name, :class => 'form-control' %>
+                            <%= f.label :name, 'タグ入力  ,で区切って入力してください', :class => 'mt-4' %><br />
+                            <%= tag.text_field :name, :class => 'form-control', placeholder: "例   バイク,単気筒,アウトドア" %>
                         <% end %>
                 </div>
                 <%= f.submit "送信", class: "btn btn-primary" %>

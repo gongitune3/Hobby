@@ -29,14 +29,15 @@ class Users::BoardsController < ApplicationController
     end
     
     def create
-        @board= current_user.boards.build(board_params)
+        @board = current_user.boards.build(board_params)
         tags = params[:board][:tag_list][:name].split(",")
         if @board.save
             @board.save_tags(tags)
             flash[:success] = "記事を作成しました"
             redirect_to users_board_path(@board.id)
         else
-          render root_path
+          # @board = current_user.boards.build(board_params)
+          render 'users/boards/new'
         end
       end
       
@@ -44,17 +45,18 @@ class Users::BoardsController < ApplicationController
         @board= Board.find(params[:id])
       end
       
-      def update
-        @board= Board.find(params[:id])
-        tag_list = params[:tag_list].split(",")
-        if @board.update_attributes(board_params)
-            @board.save_tags(tag_list)
-            flash[:success] = "記事を更新しました"
-            redirect_to users_board_path(@board.id)
-        else
-          render 
-        end
-      end
+      # 編集は予定未実装
+      # def update
+      #   @board= Board.find(params[:id])
+      #   tag_list = params[:tag_list].split(",")
+      #   if @board.update_attributes(board_params)
+      #       @board.save_tags(tag_list)
+      #       flash[:success] = "記事を更新しました"
+      #       redirect_to users_board_path(@board.id)
+      #   else
+      #     render 
+      #   end
+      # end
     
       def destroy
         @board = Board.find(params[:id])

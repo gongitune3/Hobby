@@ -9,7 +9,10 @@ class Users::BoardCommentsController < ApplicationController
             flash[:success] = "Comment was successfully created."
             redirect_to users_board_path(@board)
         else
-            @board_comments = BoardComment.where(board_id: @board.id)
+            @board_comment = BoardComment.new
+	        @board_comments = @board.board_comments
+            @boards = Board.all
+            @tags = @board.tags
             render 'users/boards/show'
         end
     end

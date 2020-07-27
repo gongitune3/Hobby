@@ -12,31 +12,31 @@
         <div class="form-group">
             
             <div class="field">
-              <%= f.label :ニックネーム %><br />  
-              <%= f.text_field :nickname, :class => 'form-control' %>
+              <%= f.label :ニックネーム, class: "mt-4" %><br />  
+              <%= f.text_field :nickname, class: "form-control" %>
             </div>
 
             <div class="field">
-              <%= f.label :自己紹介 %><br />
-              <%= f.text_area :introduction, :class => 'form-control' %>
+              <%= f.label :自己紹介, class: "mt-4" %><br />
+              <%= f.text_area :introduction, class: "form-control" %>
             </div>
 
             <div class="field">
-              <%= f.label :email %><br />
-              <%= f.email_field :email, autofocus: true, autocomplete: "email", :class => 'form-control' %>
+              <%= f.label :email, class: "mt-4" %><br />
+              <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
             </div>
 
             <div class="field">
-              <%= f.label :password %>
+              <%= f.label :password, class: "mt-4" %>
               <% if @minimum_password_length %><br />  
               <em>(<%= @minimum_password_length %> characters minimum)</em>
               <% end %><br />
-              <%= f.password_field :password, autocomplete: "new-password", :class => 'form-control' %>
+              <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
             </div>
 
             <div class="field">
-              <%= f.label :password_confirmation %><br />
-              <%= f.password_field :password_confirmation, autocomplete: "new-password", :class => 'form-control' %>
+              <%= f.label :password_confirmation, class: "mt-4" %><br />
+              <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
             </div>
 
             <div class="actions">
