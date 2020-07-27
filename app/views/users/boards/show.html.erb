@@ -23,7 +23,7 @@
         <div class="col-md-10 offset-1">
             <div class="row">
                 <div class="col-md-8">
-                    <h2 style="display:inline-block"><%= @board.title %></h2>
+                    <h2 class="mt-2" style="display:inline-block"><%= @board.title %></h2>
                     <i class="ml-2">タグ:</i>
                     <% @tags.each do |tag| %>
                         <%= link_to tag.name, users_tags_path(tag: tag.name) %>
@@ -74,13 +74,11 @@
     <div class="row">
         <%= render 'users/boards/thread', board_comments: @board.board_comments %>
     </div>
-    
     <div class="row">
         <% if user_signed_in? %>
-            <div class="comment-form" id="bottom">
-                <%= form_with model:[@board, @board_comment], url: users_board_board_comments_path(@board.id), local: true, method: :post do |f| %>
-                    <%= f.text_area :comment, size: "60x4", class: "mt-5", placeholder: "空欄ではコメントできません。" %>
-                    <%= f.submit '送信' %>
+                    <%= form_with model:[@board, @board_comment], url: users_board_board_comments_path(@board.id), local: true, method: :post do |f| %>
+                    <%= f.text_area :comment, size: "60x4", class: "mt-5", placeholder: "空欄ではコメントできません。また100文字以内の投稿を..." %>
+                    <%= f.submit '投稿' %>
                 <% end %>
             </div>
         <% end %>

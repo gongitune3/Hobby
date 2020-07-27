@@ -10,7 +10,7 @@ class Board < ApplicationRecord
     has_many :bookmarks, dependent: :destroy
     validates :title, presence: true, length: { maximum: 33 } 
     validates :introduction, presence: true, length: { maximum: 53 }
-    
+    validate :tag_holdings
 
 
 
@@ -39,9 +39,9 @@ class Board < ApplicationRecord
     end
 
     private
-    def products_number
-      errors.add(:products, "を1つ以上指定して下さい") if products.size < 1
-      errors.add(:products, "は32個までです") if products.size > 32
+    def tag_holdings
+      errors.add(:tags, "を1つ以上指定して下さい") if tags.size < 1
+      errors.add(:tags, "は32個までです") if tags.size > 5
     end
 
 end
