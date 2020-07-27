@@ -1,21 +1,23 @@
 <table class="table table-borderless">
-        <% board_comments.each do |board_comment| %>
+        <% @response = 1 %>
+        <% board_comments.each do |board_comment, i| %>
+            <%#空もしくは上限を超えるコメントをした際に、エラーを起こさない為に必要。board_commentがnillで飛ぶ為エラーが出る。%>
             <% if !board_comment.id.nil?  %>
-                <tr>
-                    <td>
+                <tr scope="row">
+                    <td colspan="1">
                         <%= link_to users_user_path(board_comment.user) do %>
                             <%= attachment_image_tag board_comment.user, :profile_image, :fill, 80, 80, fallback: "no_image.jpg", size: "50x50", class: "rounded-circle" %><br>
                             <%= board_comment.user.nickname %>
                         <% end %>
                     </td>
-                    <td>
+                    <td colspan="2">
                         <%= board_comment.created_at.strftime("%Y-%m-%d %H:%M") %>
                     </td>
-                    <td><%= board_comment.comment %></td>
-                        <% if board_comment.user == current_user %>
-                            <td><%= link_to '削除', users_board_comment_path(board_comment), class: 'btn-sm btn-danger', method: :delete, local: true %></td>
-                        <% end %>
-                    <td>
+                    
+                    <td colspan="7">
+                        <i class="mr-2"><%= @response %>:</i><%= board_comment.comment %>
+                    </td>
+                    <td colspan="1">
                         <% if user_signed_in? %>
                             <% if board_comment.favorited_by?(current_user) %>
                                 <% favorite = board_comment.favorites.find_by(user_id: current_user.id) %>
@@ -31,8 +33,14 @@
                             <i class="far fa-heart"><%= board_comment.favorites.count %></i>
                         <% end %>
                     </td>
+                    <% if board_comment.user == current_user %>
+                        <td colspan="1">
+                            <%= link_to '削除', users_board_comment_path(board_comment), class: 'btn-sm btn-danger', method: :delete, local: true %>
+                        </td>
+                    <% end %>
                 </tr>
             <% end %>
+            <% @response += 1 %>
         <% end %>
 </table>
 

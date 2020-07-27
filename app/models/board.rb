@@ -11,7 +11,7 @@ class Board < ApplicationRecord
     validates :title, presence: true, length: { maximum: 33 } 
     validates :introduction, presence: true, length: { maximum: 53 }
     # 多対多のバリデーション用メソッド
-    validate :tag_holdings
+    # validate :tag_holdings
 
 
 
@@ -38,14 +38,10 @@ class Board < ApplicationRecord
       end
       
     end
-    
     # 多対多のバリデーション用メソッド
     private
     def tag_holdings
       errors.add(:tags, "の設定は1つ以上５以下でお願い致します") if tags.size < 1
       errors.add(:tags, "は5個までです") if tags.size > 5
     end
-
 end
-
-

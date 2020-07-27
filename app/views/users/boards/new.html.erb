@@ -2,6 +2,9 @@
    <div class="row">
         <div class="col-md-6 offset-3">
             <h2>スレッド新規作成画面</h2>
+            <p class="text-danger">
+                <%= flash[:notice] %>
+            </p>
             <%= render '/layouts/errors', obj: @board %>
         </div>
     </div>

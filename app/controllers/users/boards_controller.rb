@@ -22,16 +22,26 @@ class Users::BoardsController < ApplicationController
     def show
         @board = Board.find(params[:id])
         @board_comment = BoardComment.new
-	      @board_comments = @board.board_comments
+	    @board_comments = @board.board_comments
         @boards = Board.all
         @tags = @board.tags
         # @users = @board.board_comments.users
     end
-    
+
     def create
         @board = current_user.boards.build(board_params)
+        # do |board|
         tags = params[:board][:tag_list][:name].split(",")
-        if @board.save
+        #     tags.each do |tag|
+        #         board.tags.buildfind_or_initialize_by(name: tag)
+        #     end
+        # end
+        if tags.size > 5
+            flash[:notice] = "タグ設定は５個以下でお願い致します。"
+            redirect_to new_users_board_path
+            return
+        end
+        if  @board.save
             @board.save_tags(tags)
             flash[:success] = "記事を作成しました"
             redirect_to users_board_path(@board.id)

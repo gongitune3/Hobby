@@ -76,15 +76,13 @@
     </div>
     <div class="row">
         <% if user_signed_in? %>
-                    <%= form_with model:[@board, @board_comment], url: users_board_board_comments_path(@board.id), local: true, method: :post do |f| %>
+                    <%= form_with model:[@board, @board_comment], url: users_board_board_comments_path(@board.id), local: true, method: :post, class: "pl-5" do |f| %>
                     <%= f.text_area :comment, size: "60x4", class: "mt-5", placeholder: "空欄ではコメントできません。また100文字以内の投稿を..." %>
                     <%= f.submit '投稿' %>
                 <% end %>
             </div>
         <% end %>
-    </div>
-    <div class="row">
-        <div class="col-md-5">
+        <div class="col-md-2 float-right">
             <p id="back-top">
                 <a href="#top"><span class="fas fa-arrow-circle-up fa-3x"></span></a>
             </p>
