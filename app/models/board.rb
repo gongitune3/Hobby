@@ -8,7 +8,7 @@ class Board < ApplicationRecord
     accepts_nested_attributes_for :tags
 
     has_many :bookmarks, dependent: :destroy
-    validates :title, presence: true, length: { maximum: 33 } 
+    validates :title,uniqueness: { case_sensitive: :false }, presence: true, length: { maximum: 33 } 
     validates :introduction, presence: true, length: { maximum: 53 }
     # 多対多のバリデーション用メソッド
     # validate :tag_holdings

@@ -19,6 +19,7 @@ class User < ApplicationRecord
   validates :nickname,uniqueness: { case_sensitive: :false }, presence: true, length: { maximum: 10 } 
   validates :introduction, presence: true, length: { maximum: 33 } 
 
+  # Skinny Controller, Fat Model
   scope :perfect_search, -> (nickname, method) { where(nickname: nickname) if method == 'perfect' }
   scope :forward_search, -> (nickname, method) { where('nickname LIKE ?', nickname+'%') if method == 'forward' }
   scope :backward_search, -> (nickname, method) { where('nickname LIKE ?', '%'+nickname) if method == 'backward' }
