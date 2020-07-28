@@ -39,6 +39,6 @@
   <https://app.diagrams.net/#G1uqV5_yiVZtpzNGU8qcpUFeNaV1V-ZKFs>
 
 ### 機能一覧
-  <https://docs.google.com/spreadsheets/d/1UgK-6l38k5T81XjcTIn7CHnGRkB_sBXS5xQWAVhWmks/edit#gid=0>
+  <https://docs.google.com/spreadsheets/d/1Y0qoizWCRv3C8bXC7tqjsVSfoV2NiRMpANreVnQrZEc/edit#gid=0>
 
 
