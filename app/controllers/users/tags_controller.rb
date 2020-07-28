@@ -11,8 +11,8 @@ class Users::TagsController < ApplicationController
     # def destroy
 
     # end
-    private
-    def tag_params
-        params.require(:board).permit(:board_id, :name)
-    end
+    # private
+    # def tag_params
+    #     params.require(:board).permit(:board_id, :name)
+    # end
 end
