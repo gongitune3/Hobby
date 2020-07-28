@@ -6,13 +6,13 @@ class Users::BoardCommentsController < ApplicationController
         @board_comment = @board.board_comments.new(board_comment_params)
         @board_comment.user_id = current_user.id
         if @board_comment.save
-            flash[:success] = "Comment was successfully created."
             redirect_to users_board_path(@board)
         else
             @board_comment = BoardComment.new
 	        @board_comments = @board.board_comments
             @boards = Board.all
             @tags = @board.tags
+            flash[:notice] = "空欄及び、100字以上の投稿はできません。。。"
             render 'users/boards/show'
         end
     end

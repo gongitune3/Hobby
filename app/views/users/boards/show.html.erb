@@ -75,13 +75,20 @@
         <%= render 'users/boards/thread', board_comments: @board.board_comments %>
     </div>
     <div class="row">
+        <div class="col-md-10 offset-1">
+            <p class="text-danger">
+                <%= flash[:notice] %>
+            </p>
+        </div>
+    </div>
+    <div class="row">
         <% if user_signed_in? %>
-                    <%= form_with model:[@board, @board_comment], url: users_board_board_comments_path(@board.id), local: true, method: :post, class: "pl-5" do |f| %>
-                    <%= f.text_area :comment, size: "60x4", class: "mt-5", placeholder: "空欄ではコメントできません。また100文字以内の投稿を..." %>
-                    <%= f.submit '投稿' %>
-                <% end %>
-            </div>
+            <%= form_with model:[@board, @board_comment], url: users_board_board_comments_path(@board.id), local: true, method: :post, class: "pl-5" do |f| %>
+                <%= f.text_area :comment, size: "60x4", class: "mt-5", placeholder: "空欄ではコメントできません。また100文字以内の投稿を..." %>
+                <%= f.submit '投稿' %>
+            <% end %>
         <% end %>
+    </div>
         <div class="col-md-2 float-right">
             <p id="back-top">
                 <a href="#top"><span class="fas fa-arrow-circle-up fa-3x"></span></a>
