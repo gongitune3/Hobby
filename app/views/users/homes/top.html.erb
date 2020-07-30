@@ -35,5 +35,21 @@
                スレッドの作成、コメント投稿等に関してはログインが必要です。ご理解ください_(┐「ε:)_<br>
                <%# ※目に余る事がありましたらこちらまで。。 %>
             </p>
+            <p id="lines">
+                <% @lines.each do |line| %>
+                <tr>
+                    <td>
+                        <%= line.comment %>
+                    </td>
+                </tr>
+            <% end %>
+            </p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-10 offset-4">
+            <p class="text-primary">
+                <%= flash[:notice] %>
+            </p>
         </div>
     </div>
