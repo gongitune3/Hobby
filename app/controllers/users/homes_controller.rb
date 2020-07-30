@@ -8,7 +8,9 @@ class Users::HomesController < ApplicationController
         #スレッドをブックマークの多い順で表示
         @all_ranks = Board.find(Bookmark.group(:board_id).order('count(board_id) desc').limit(3).pluck(:board_id))
 
-
+        
         # @lines = BoardComment.order("RANDOM()").limit(3)
+        line = BoardComment.pluck(:id).sample(5)
+        @lines = BoardComment.where(id: line)
     end
 end
