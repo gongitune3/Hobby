@@ -2,7 +2,7 @@ namespace :delete do
 
     desc "1週間レスがないスレッドを削除する"
         boards = Board.all
-        
+
         comments = []
         boards.each do |board|
             comments << board.board_comments
@@ -13,6 +13,7 @@ namespace :delete do
                 comment.board.destroy
             end
         end
+
     end
 
 end
