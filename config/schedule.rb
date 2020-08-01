@@ -32,12 +32,14 @@ set :output, "#{Rails.root}/log/cron.log"
 # stagingのみで実行
 if rails_env.to_sym != :development
   # clear cache
-  every 10.minutes do
+  every 1.day do
     begin
-      rake 'sample_task:all', :environment_variable => "RAILS_ENV", :environment => "development"
+      rake 'delete:delete_board', :environment_variable => "RAILS_ENV", :environment => "development"
     rescue => e
-      Rails.logger.error("aborted rake task")
+      Rails.logger.error("aborted rake delete task")
       raise e
     end
   end
 end
+
+
