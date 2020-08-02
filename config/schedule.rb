@@ -26,10 +26,10 @@ require File.expand_path(File.dirname(__FILE__) + "/environment")
 rails_env = ENV['RAILS_ENV'] || :development
 # cronを実行する環境変数をセット
 set :environment, rails_env
-# cronのログの吐き出し場所
+# cronのログの吐き出し場所、"#{}"で展開している
 set :output, "#{Rails.root}/log/cron.log"
 
-# stagingのみで実行
+# staging環境のみで実行、オブジェクトの指定？？？
 if rails_env.to_sym != :development
   # clear cache
   every 1.day do
