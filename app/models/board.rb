@@ -13,7 +13,13 @@ class Board < ApplicationRecord
     # 多対多のバリデーション用メソッド
     # validate :tag_holdings
 
-
+    def board_delete
+      Board.all.each do |board|
+        if Date.current - 7 > board.board_comments.last.created_at
+            board.destroy
+        end
+      end
+    end
 
     #いいね機能と同様にメソッドの引数にログインユーザーを与えて、ブックマークの外部キーが存在しているか確認している。
     def bookmark_by?(user)
@@ -38,10 +44,12 @@ class Board < ApplicationRecord
       end
       
     end
-    # 多対多のバリデーション用メソッド
-    private
-    def tag_holdings
-      errors.add(:tags, "の設定は1つ以上５以下でお願い致します") if tags.size < 1
-      errors.add(:tags, "は5個までです") if tags.size > 5
-    end
+
+
+    # 多対多のバリデーション用メソッド。。save_tagsを使用したい為、バリデーションの位置が上手く掛からず不採用。
+    # private
+    # def tag_holdings
+    #   errors.add(:tags, "の設定は1つ以上５以下でお願い致します") if tags.size < 1
+    #   errors.add(:tags, "は5個までです") if tags.size > 5
+    # end
 end

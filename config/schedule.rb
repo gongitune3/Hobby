@@ -32,15 +32,23 @@ set :output, "#{Rails.root}/log/cron.log"
 
 # staging環境のみで実行、オブジェクトの指定？？？
 if rails_env.to_sym != :development
-  # １日事にtaskを走らせる。
-  every 1.day do
-    begin
-      rake 'delete:delete_board', :environment_variable => "RAILS_ENV", :environment => "development"
-    rescue => e
-      Rails.logger.error("aborted rake delete task")
-      raise e
+
+    every 1.day do
+        begin
+            rake 'delete:delete_board', :environment_variable => "RAILS_ENV", :environment => "development"
+        rescue => e
+            Rails.logger.error("aborted rake delete task")
+            raise e
+        end
     end
-  end
+
+    every 30.minutes do
+        begin
+            rake 'count_stop:delete_board', :environment_variable => "RAILS_ENV", :environment => "development"
+        rescue => e
+            Rails.logger.error("aborted rake delete task")
+            raise e
+        end
+    end
+    
 end
-
-
