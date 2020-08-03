@@ -30,18 +30,14 @@ $(document).ready(function(){
             } else {
                 $('#back-top').stop(true, true).fadeOut();
             }
-        });
-        // scroll body to 0px on click
-        $('#back-top a').click(function () {
-            $('body,html').animate({
-                scrollTop: 0
-            }, 500);
-            return false;
-        });
-        $('#lines').textFx({
-                type: 'fadeIn',
-                iChar: 20,
-                iAnim: '1000'
-            });
+    });
+    // scroll body to 0px on click
+    $('#back-top a').click(function () {
+        $('body,html').animate({
+            scrollTop: 0
+        }, 500);
+        return false;
+    });
+        
 });
 

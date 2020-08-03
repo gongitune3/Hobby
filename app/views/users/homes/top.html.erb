@@ -35,15 +35,20 @@
                スレッドの作成、コメント投稿等に関してはログインが必要です。ご理解ください_(┐「ε:)_<br>
                <%# ※目に余る事がありましたらこちらまで。。 %>
             </p>
-            <p id="lines">
-                <% @lines.each do |line| %>
-                <tr>
-                    <td>
-                        <%= line.comment %>
-                    </td>
-                </tr>
-                <% end %>
-            </p>
+            <div class="row mt-5">
+                    <p id="lines">
+                        <% @lines.each do |line| %>
+                        <tr>
+                            <td>
+                                <%= line.comment %>
+                            </td>
+                        </tr>
+                        <% end %>
+                    </p>
+                    <div class="col-md-8 offset-2">
+                        <%= image_tag 'hobby_c.png', size: '125x200' %>
+                    </div>
+            </div>
         </div>
     </div>
     <div class="row">
