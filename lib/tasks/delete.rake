@@ -4,7 +4,7 @@ namespace :delete do
     #モデルにアクセスする場合は :environmentの指定が必須。
     task delete_board: :environment do
         Board.all.each do |board|
-            if Date.current - 1 > board.board_comments.last.created_at
+            if Date.current - 7 > board.board_comments.last.created_at
                 board.destroy
             end
         end

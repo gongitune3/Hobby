@@ -20,9 +20,10 @@
 # Learn more: http://github.com/javan/whenever
 
 
-# Rails.rootを使用するために必要
+# Rails.rootを使用するために必要 、本番環境とローカルの環境ではディレクトリの階層が変わる為、動的に処理を
+# このファイルでも使える様に、読み込む
 require File.expand_path(File.dirname(__FILE__) + "/environment")
-# cronを実行する環境変数
+# cronを実行する環境変数 中がproductionではなければRAILS_ENVからであればdevelopmentが代入される。
 rails_env = ENV['RAILS_ENV'] || :development
 # cronを実行する環境変数をセット
 set :environment, rails_env
@@ -31,7 +32,7 @@ set :output, "#{Rails.root}/log/cron.log"
 
 # staging環境のみで実行、オブジェクトの指定？？？
 if rails_env.to_sym != :development
-  # clear cache
+  # １日事にtaskを走らせる。
   every 1.day do
     begin
       rake 'delete:delete_board', :environment_variable => "RAILS_ENV", :environment => "development"
