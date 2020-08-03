@@ -13,13 +13,8 @@ class Board < ApplicationRecord
     # 多対多のバリデーション用メソッド
     # validate :tag_holdings
 
-    def board_delete
-      Board.all.each do |board|
-        if Date.current - 7 > board.board_comments.last.created_at
-            board.destroy
-        end
-      end
-    end
+    
+    
 
     #いいね機能と同様にメソッドの引数にログインユーザーを与えて、ブックマークの外部キーが存在しているか確認している。
     def bookmark_by?(user)

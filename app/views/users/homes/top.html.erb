@@ -36,15 +36,15 @@
                <%# ※目に余る事がありましたらこちらまで。。 %>
             </p>
             <div class="row mt-5">
-                    <p id="lines">
-                        <% @lines.each do |line| %>
-                        <tr>
-                            <td>
-                                <%= line.comment %>
-                            </td>
-                        </tr>
-                        <% end %>
-                    </p>
+                        <table class="table table-borderless">
+                            <% @lines.each do |line| %>
+                            <tr>
+                                <td>
+                                    <p class="text"><%= line.comment %></p>
+                                </td>
+                            </tr>
+                            <% end %>
+                        </table>
                     <div class="col-md-8 offset-2">
                         <%= image_tag 'hobby_c.png', size: '125x200' %>
                     </div>
@@ -58,3 +58,35 @@
             </p>
         </div>
     </div>
+    
+
+
+
+<script>
+const texts = document.querySelectorAll(".text");
+texts.forEach((text,index) => {
+
+const aa = text.textContent.split("");
+text.textContent = "";
+let loc = 0;
+let timeoutId;
+function bb(aa) {
+text.classList.add('appear')
+text.textContent += aa[loc];
+loc++;
+timeoutId = setTimeout(() => {
+bb(aa);
+}, 100);
+if (loc === aa.length) {
+clearTimeout(timeoutId);
+text.classList.add('fadeOut')
+setTimeout(()=> {
+text.classList.add('displaynone')
+},600)
+}
+}
+setTimeout(()=> {
+bb(aa)
+},index * 2000)
+});
+</script>

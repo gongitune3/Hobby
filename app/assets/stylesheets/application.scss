@@ -48,6 +48,11 @@ ul {
     margin: 20px 0 20px 0;
 }
 
+.fadein span{
+    opacity:0;
+    }
+
+
 // 文字調整の為
 .table {
     table-layout: fixed;
@@ -58,4 +63,25 @@ ul {
 #error_explanation {
     color: red;
     font-family: 'GenJyuuGothicX';
+}
+
+.text.fadeOut {
+    animation: 0.8s fadeout forwards;
+    }
+    .text.displaynone {
+    display: none;
+    }
+    @keyframes fadeout {
+    from {
+    opacity: 1;
+    transform: translateY(0);
+    }
+    20% {
+    opacity: 1;
+    transform: translateY(0);
+    }
+    to {
+    opacity: 0;
+    transform: translateY(-20px);
+    }
     }
