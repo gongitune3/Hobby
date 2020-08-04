@@ -1,7 +1,7 @@
 <table class="table table-borderless">
         <% @response = 1 %>
         <% board_comments.each do |board_comment, i| %>
-            <%#空もしくは上限を超えるコメントをした際に、エラーを起こさない為に必要。board_commentがnillで飛ぶ為エラーが出る。%>
+            <%#コメントが空もしくは上限を超える場合、エラーを起こさない為に必要。board_commentがnillで飛ぶ為エラーが出る。%>
             <% if !board_comment.id.nil?  %>
                 <tr scope="row">
                     <td colspan="1">

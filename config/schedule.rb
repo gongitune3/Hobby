@@ -24,8 +24,9 @@
 # このファイルでも使える様に、読み込む
 require File.expand_path(File.dirname(__FILE__) + "/environment")
 # cronを実行する環境変数 中がproductionではなければRAILS_ENVからであればdevelopmentが代入される。
+# railsの起動方法をどっちで起動しているかを確認している
 rails_env = ENV['RAILS_ENV'] || :development
-# cronを実行する環境変数をセット
+# cronを実行する環境変数をセット→起動サーバーを定義
 set :environment, rails_env
 # cronのログの吐き出し場所、"#{}"で展開している
 set :output, "#{Rails.root}/log/cron.log"
@@ -35,6 +36,7 @@ if rails_env.to_sym != :development
 
     every 1.day do
         begin
+                                        # 実行する時にに"RAILS_ENV"を見る様に
             rake 'delete:delete_board', :environment_variable => "RAILS_ENV", :environment => "development"
         rescue => e
             Rails.logger.error("aborted rake delete task")
@@ -50,5 +52,5 @@ if rails_env.to_sym != :development
             raise e
         end
     end
-    
+
 end

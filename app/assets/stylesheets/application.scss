@@ -85,3 +85,15 @@ ul {
     transform: translateY(-20px);
     }
     }
+
+
+.starting-point {
+    position: relative;
+}
+
+.placement {
+    position:  fixed;        
+    left:  50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+}
