@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_16_082947) do
+ActiveRecord::Schema.define(version: 2020_08_05_120245) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email"
@@ -55,6 +55,13 @@ ActiveRecord::Schema.define(version: 2020_07_16_082947) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id", "board_id"], name: "index_bookmarks_on_user_id_and_board_id", unique: true
+  end
+
+  create_table "contacts", force: :cascade do |t|
+    t.string "email"
+    t.text "message"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "favorites", force: :cascade do |t|
