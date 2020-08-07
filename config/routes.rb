@@ -1,17 +1,5 @@
 Rails.application.routes.draw do
-  namespace :users do
-    get 'contacts/new'
-    get 'contacts/create'
-  end
-  namespace :admins do
-    get 'contacts/new'
-    get 'contacts/create'
-  end
-  get 'contacts/new'
-  get 'contacts/create'
-  namespace :users do
-    get 'def/create'
-  end
+
   devise_for :users, controllers: { 
     sessions: 'users/sessions',
     regisrrations: 'users/regisrrations'
@@ -26,11 +14,12 @@ Rails.application.routes.draw do
   # 管理者側root
   namespace :admins do
     root 'homes#top'
+    get 'contacts/new'
+    get 'contacts/create'
   end
 
   # ユーザー側root
   namespace :users do
-    root 'home#top'
     resources :users,only: [:show,:index,:edit,:update] do
       resource :relationships, only: [:create, :destroy]
       get 'follows' => 'relationships#follower', as: 'follows'
@@ -51,7 +40,8 @@ Rails.application.routes.draw do
     resources :inquiries, only: [:new,:create]
 
     get 'search' => 'search#search', as: 'search'
-
+    get 'contacts/new'
+    get 'contacts/create'
   end
 
 end
