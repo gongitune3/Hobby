@@ -42,6 +42,7 @@ Rails.application.routes.draw do
     get 'search' => 'search#search', as: 'search'
     get 'contacts/new'
     get 'contacts/create'
+    get 'homes/about'
   end
 
 end

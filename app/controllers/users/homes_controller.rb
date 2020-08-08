@@ -1,4 +1,8 @@
 class Users::HomesController < ApplicationController
+
+    def about
+    end
+
     def top
         #タグをランダム表示
         # @random = Tag.order("RAND()").limit(5)→RANDOM関数はmysqlでは使用できない.RANDはsqlite3で使用できない。
