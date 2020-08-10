@@ -1,17 +1,19 @@
 <div class="container">
   <div class="row">
     <div class="col-md-6 offset-4">
-      <h2>ログイン画面</h2>
+      <h2>管理者ログイン画面</h2>
     </div>
   </div>
   <div class="row">
     <div class="col-md-5 offset-3">
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-      <%= render "users/shared/error_messages", resource: resource %>
+      <%= render "admins/shared/error_messages", resource: resource %>
+
         <div class="form-group">
+
           <div class="field">
-            <%= f.label :ハンドルネーム, class: "mt-4" %><br />
-            <%= f.text_field :nickname, class: "form-control" %>
+            <%= f.label :管理者名, class: "mt-4" %><br />
+            <%= f.text_field :name, class: "form-control" %>
           </div>
           <div class="field">
             <%= f.label :password, class: "mt-4" %><br />
@@ -24,11 +26,13 @@
             </div>
           <% end %>
           <div class="actions">
-            <%= f.submit "ログイン", class: "btn btn-primary" %>
+            <%= f.submit "管理者ログイン", class: "btn btn-primary" %>
           </div>
+
         </div>
       <% end %>
-      <%= render "users/shared/links" %>
+
+      <%= render "admins/shared/links" %>
     </div>
   </div>
 </div>
