@@ -5,7 +5,10 @@ Rails.application.routes.draw do
     regisrrations: 'users/regisrrations'
   }
   
-  devise_for :admins
+  devise_for :admins, controllers: { 
+    sessions: 'admins/sessions',
+    regisrrations: 'admins/regisrrations'
+  }
   
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
