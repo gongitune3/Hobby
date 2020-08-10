@@ -34,7 +34,7 @@ Rails.application.routes.draw do
     resources :boards, shallow: true do
       resource :bookmarks, only: [:create,:destroy]
       resources :board_comments, only: [:create,:destroy] do
-        resources :favorites, only: [:create,:destroy]
+        resource :favorites, only: [:create,:destroy]
       end
     end
 
