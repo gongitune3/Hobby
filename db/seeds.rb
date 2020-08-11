@@ -17,3 +17,7 @@
 
 
 
+Admin.create!(email: "admin@gmail.com",
+    name: "hobibiho",
+    password: "admin3ch",
+	password_confirmation: "admin3ch")
