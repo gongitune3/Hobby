@@ -22,7 +22,7 @@
                     </td>
                     <% if board_comment.user == current_user %>
                         <td colspan="1">
-                            <%= link_to '削除', users_board_comment_path(board_comment), class: 'btn-sm btn-danger', method: :delete, local: true %>
+                            <%= link_to '削除', users_board_comment_path(board_comment), class: 'btn-sm btn-danger', method: :delete, remote: true %>
                         </td>
                     <% end %>
                 </tr>

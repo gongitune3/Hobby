@@ -1,7 +1,7 @@
 <table class="table">
             <thead class="thead-dark">
                     <tr>
-                        <th>スレタイ</th><th>タグ</th><th>about</th><th align="right">ブックマーク数</th>
+                        <th>スレタイ</th><th>タグ</th><th>about</th><th align="left">ブックマーク数</th>
                     </tr>
             </thead>
             <% boards.each do |board| %>
@@ -17,23 +17,12 @@
                     <td>
                         <%= board.introduction %>
                     </td>
-                    <td align="center">
-                        <% if user_signed_in? %>
-                            <% if board.bookmark_by?(current_user) %>
-                                <%= link_to users_board_bookmarks_path(board.id), method: :delete, remote: true do %>
-                                    <span class="fas fa-bookmark"><%= board.bookmarks.count %></span>
-                                <% end %>
-                            <% else %>
-                                <%= link_to users_board_bookmarks_path(board.id), method: :post, remote: true do %>
-                                    <span class="far fa-bookmark-empty"><%= board.bookmarks.count %></span>
-                                <% end %>
-                            <% end %>
-                        <% else %>
-                            <span class="fas fa-bookmark"><%= board.bookmarks.count %></span>
-                        <% end %>
+                    <td align="left">
+                        <span id="bookmark_buttons_<%= board.id %>">
+                            <%= render 'users/boards/bookmark', board: board %>
+                        </span>
                     </td>
                 </tr>
             <% end %>
             <%# <%= paginate boards %>
-
 </table>
