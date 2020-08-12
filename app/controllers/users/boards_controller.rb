@@ -27,6 +27,7 @@ class Users::BoardsController < ApplicationController
 	    @board_comments = @board.board_comments
         @boards = Board.all
         @tags = @board.tags
+        @response = 1
         # @users = @board.board_comments.users
     end
 
