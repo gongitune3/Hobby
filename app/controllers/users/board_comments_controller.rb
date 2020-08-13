@@ -5,22 +5,22 @@ class Users::BoardCommentsController < ApplicationController
         @board_new = Board.new
         @board_comment = @board.board_comments.new(board_comment_params)
         @board_comment.user_id = current_user.id
-        if @board_comment.save
-            redirect_to users_board_path(@board)
-        else
+        
+        unless @board_comment.save    
             @board_comment = BoardComment.new
-	        @board_comments = @board.board_comments
+            @board_comments = @board.board_comments
             @boards = Board.all
             @tags = @board.tags
             flash[:notice] = "空欄及び、100字以上の投稿はできません。。。"
-            render 'users/boards/show'
+            redirect_to users_board_path(params[:board_id])
         end
+
     end
     
     def destroy
-        board_comment = BoardComment.find(params[:id])
-        board_comment.destroy
-        redirect_to request.referer
+        @board_comment = BoardComment.find(params[:id])
+        @board = Board.find(@board_comment.board.id)
+        @board_comment.destroy
     end
 
     private

@@ -1,8 +1,10 @@
 <table class="table table-borderless">
+        <% @response = 1%>
         <% board_comments.each do |board_comment, i| %>
             <%#コメントが空もしくは上限を超える場合、エラーを起こさない為に必要。board_commentがnillで飛ぶ為エラーが出る。%>
+            
             <% if !board_comment.id.nil?  %>
-                <tr scope="row">
+                <tr id="comment_delete<%= board_comment.id %>" scope="row">
                     <td colspan="1">
                         <%= link_to users_user_path(board_comment.user) do %>
                             <%= attachment_image_tag board_comment.user, :profile_image, :fill, 80, 80, fallback: "no_image.jpg", size: "50x50", class: "rounded-circle" %><br>

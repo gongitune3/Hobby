@@ -1,4 +1,5 @@
 class Users::FavoritesController < ApplicationController
+
     def create
         @board_comment = BoardComment.find(params[:board_comment_id])
         favorite = @board_comment.favorites.new(user_id: current_user.id)

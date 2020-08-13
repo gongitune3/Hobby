@@ -59,7 +59,7 @@
             <p class="board-introduction"><%= @board.introduction %></p>
         </div>
     </div>
-    <div id="comments-area" class="row">
+    <div id="comments_area" class="row">
         <%= render 'users/boards/thread', board_comments: @board.board_comments %>
     </div>
     <div class="row">
@@ -70,9 +70,10 @@
         </div>
     </div>
     <div class="row">
+        <%= render '/layouts/errors', obj: @board_comment %>
         <% if user_signed_in? %>
             <%= form_with model:[@board, @board_comment], url: users_board_board_comments_path(@board.id), remote: true, method: :post, class: "pl-5" do |f| %>
-                <%= f.text_area :comment, size: "60x4", class: "mt-5", placeholder: "空欄ではコメントできません。また100文字以内の投稿を..." %>
+                <%= f.text_area :comment, size: "60x4", class: "mt-5", id: "abcde", placeholder: "空欄ではコメントできません。また100文字以内の投稿を..." %>
                 <%= f.submit '投稿' %>
             <% end %>
         <% end %>
