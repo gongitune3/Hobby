@@ -1,9 +1,7 @@
 class Admins::HomesController < ApplicationController
 
-    # before_action :authenticate_admin!
-
     def top
+        day_contact = Contact.where(create_at)
     
-    end
     
 end
