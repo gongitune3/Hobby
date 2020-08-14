@@ -20,6 +20,7 @@
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
 
+
 .groundimage {
     padding-top: 50px;
     padding-bottom: 50px;
@@ -84,7 +85,7 @@ ul {
     opacity: 0;
     transform: translateY(-20px);
     }
-    }
+}
 
 
 .starting-point {
@@ -93,7 +94,7 @@ ul {
 
 .placement {
     position:  fixed;        
-    left:  50%;
-    top: 50%;
+    left:  80%;
+    top: 60%;
     transform: translate(-50%,-50%);
 }
