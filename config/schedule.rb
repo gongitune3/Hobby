@@ -20,16 +20,14 @@
 # Learn more: http://github.com/javan/whenever
 
 
-# Rails.rootを使用するために必要 、本番環境とローカルの環境ではディレクトリの階層が変わる為、動的に処理を
-# このファイルでも使える様に、読み込む→config
-require File.expand_path(File.dirname(__FILE__) + "/environment")
+require "/home/ec2-user/Hobby/current/config/environment.rb"
 # cronを実行する環境変数 中がproductionではなければRAILS_ENVからであればdevelopmentが代入される。
 # railsの起動方法をどっちで起動しているかを確認している
 rails_env = ENV['RAILS_ENV'] || :development
 # cronを実行する環境変数をセット→起動サーバーを定義
 set :environment, rails_env
-# cronのログの吐き出し場所、"#{}"で展開している→Hobby
-set :output, "#{Rails.root}/log/cron.log"
+# cronのログの吐き出し場所
+set :output, "/home/ec2-user/Hobby/current/log/cron.log"
 
 # staging環境のみで実行、オブジェクトの指定？？？
 if rails_env.to_sym != :development
