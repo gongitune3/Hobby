@@ -8,7 +8,7 @@
 # set :output, "/path/to/my/cron_log.log"
 #
 # every 2.hours do
-#   command "/usr/bin/some_great_command"
+#   commad "/usr/bin/some_great_command"
 #   runner "MyModel.some_method"
 #   rake "some:great:rake:task"
 # end
@@ -29,7 +29,7 @@ set :environment, rails_env
 # cronのログの吐き出し場所
 set :output, "/home/ec2-user/Hobby/current/log/cron.log"
 
-# staging環境のみで実行、オブジェクトの指定？？？
+# staging環境のみで実行、オブジェクトの指定
 if rails_env.to_sym != :development
 
     every 1.day do

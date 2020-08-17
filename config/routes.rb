@@ -43,9 +43,9 @@ Rails.application.routes.draw do
     resources :inquiries, only: [:new,:create]
 
     get 'search' => 'search#search', as: 'search'
+    get 'about' => 'homes/about', as: 'about'
     get 'contacts/new'
-    get 'contacts/create'
-    get 'homes/about'
+    post 'contacts/create'
   end
 
 end
