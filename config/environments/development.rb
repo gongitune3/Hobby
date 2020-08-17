@@ -37,16 +37,16 @@ Rails.application.configure do
   #送信方法を指定
   config.action_mailer.delivery_method = :smtp
   #送信方法として:smtpを指定した場合は、このconfigを使って送信詳細の設定を行います
+  # 以下、、railsからメールを送信するgmail用のサーバーを用意しなければならない
+  # Googleが用意しているサーバーに対して依頼している。→サーバー確認の為下記記述が必要。
   config.action_mailer.smtp_settings = {
     #gmail利用時はaddress,domain,portは下記で固定
     address:"smtp.gmail.com",
     domain: 'smtp.gmail.com',
     port:587,
-    # user_name: ENV['MAIL'],
-    user_name: 'e2rcsardanke@gmail.com',
-    # password: ENV['MAIL_PASS'],
-    password: 'm1204siwasu4012vvvv',
-    authentication: :login
+    user_name: ENV['GMAIL'],
+    password: ENV['GMAIL_PASS'],
+    authentication: :plain
   }
 
   config.action_mailer.perform_caching = false
