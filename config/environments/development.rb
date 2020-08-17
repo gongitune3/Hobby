@@ -31,16 +31,22 @@ Rails.application.configure do
   config.active_storage.service = :local
 
   # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = true
+  
+  #deviseが認証用のURLなどを生成するのに必要になる
+  config.action_mailer.default_url_options = {  host: 'localhost', port: 3000 }
+  #送信方法を指定
   config.action_mailer.delivery_method = :smtp
+  #送信方法として:smtpを指定した場合は、このconfigを使って送信詳細の設定を行います
   config.action_mailer.smtp_settings = {
-    port:                 587,
-    address:              'smtp.gmail.com',
-    domain:               'gmail.com',
-    user_name:            ENV['MAIL'],
-    password:             ENV['MAIL_PASS'],
-    authentication:       'login',
-    enable_starttls_auto: true
+    #gmail利用時はaddress,domain,portは下記で固定
+    address:"smtp.gmail.com",
+    domain: 'smtp.gmail.com',
+    port:587,
+    # user_name: ENV['MAIL'],
+    user_name: 'e2rcsardanke@gmail.com',
+    # password: ENV['MAIL_PASS'],
+    password: 'm1204siwasu4012vvvv',
+    authentication: :login
   }
 
   config.action_mailer.perform_caching = false

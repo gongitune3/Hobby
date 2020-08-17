@@ -1,5 +1,9 @@
 class Users::ContactsController < ApplicationController
+
   def new
+  logger.debug '======================================='
+  logger.debug Rails.env
+  logger.debug '======================================='
     @contact = Contact.new
   end
 
@@ -10,6 +14,7 @@ class Users::ContactsController < ApplicationController
       flash[:success] = 'お問い合わせを受け付けました'
       redirect_to root_path
     else
+      @contact = Contact.new(contact_params)
       render :new
     end
   end
