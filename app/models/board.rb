@@ -1,16 +1,16 @@
 class Board < ApplicationRecord
     belongs_to :user
     has_many :board_comments, dependent: :destroy
-
+    has_many :bookmarks, dependent: :destroy
+    has_many :notifications, dependent: :destroy
     #--タグ機能中間テーブル--
     has_many :board_tags, dependent: :destroy
     has_many :tags, through: :board_tags
     accepts_nested_attributes_for :tags
 
-    has_many :bookmarks, dependent: :destroy
+    # 多対多のバリデーション用メソッド
     validates :title,uniqueness: { case_sensitive: :false }, presence: true, length: { maximum: 33 } 
     validates :introduction, presence: true, length: { maximum: 53 }
-    # 多対多のバリデーション用メソッド
     # validate :tag_holdings
 
     
