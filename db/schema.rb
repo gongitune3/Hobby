@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_05_120245) do
+ActiveRecord::Schema.define(version: 2020_08_17_073728) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email"
@@ -69,6 +69,21 @@ ActiveRecord::Schema.define(version: 2020_08_05_120245) do
     t.integer "board_comment_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.integer "visitor_id", null: false
+    t.integer "visited_id", null: false
+    t.integer "board_id"
+    t.integer "board_comment_id"
+    t.string "action", default: "", null: false
+    t.boolean "checked", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["board_comment_id"], name: "index_notifications_on_board_comment_id"
+    t.index ["board_id"], name: "index_notifications_on_board_id"
+    t.index ["visited_id"], name: "index_notifications_on_visited_id"
+    t.index ["visitor_id"], name: "index_notifications_on_visitor_id"
   end
 
   create_table "relationships", force: :cascade do |t|

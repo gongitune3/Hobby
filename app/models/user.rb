@@ -14,6 +14,9 @@ class User < ApplicationRecord
   has_many :followed, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy 
   has_many :following_user, through: :follower, source: :followed
   has_many :follower_user, through: :followed, source: :follower
+  has_many :active_notifications, class_name: 'Notification', foreign_key: 'visitor_id', dependent: :destroy
+  has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
+
 
   # (case_sensitive: :falssは大文字小文字の区別をしないということ）
   validates :nickname,uniqueness: { case_sensitive: :false }, presence: true, length: { maximum: 10 } 
