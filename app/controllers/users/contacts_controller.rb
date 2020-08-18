@@ -11,7 +11,6 @@ class Users::ContactsController < ApplicationController
       flash[:success2] = 'お問い合わせを受け付けました'
       redirect_to root_path
     else
-      @contact = Contact.new(contact_params)
       render :new
     end
   end
@@ -19,7 +18,7 @@ class Users::ContactsController < ApplicationController
   private
 
   def contact_params
-    params.require(:contact).permit(:email, :message)
+    params.require(:contact).permit(:email, :message, :type)
   end
 
 end

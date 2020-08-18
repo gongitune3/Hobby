@@ -6,8 +6,8 @@ class ContactMailer < ApplicationMailer
   #   en.contact_mailer.contact_mail.subject
   #
   def contact_mail(contact)
-    @contact = contact  
-    mail to: ENV['FROM'], subject: "Hobby報告"
+    @contact = contact 
+    mail to: ENV['TO_MAIL'], subject: "Hobby報告"
   end
 
 end
