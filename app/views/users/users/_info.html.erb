@@ -26,13 +26,11 @@
         </div>
         <!-- フォローボタン -->
             <% if current_user != user %>
-                <% if current_user.following?(user) %>
-                    <%= link_to 'フォロー外す', users_user_relationships_path(user.id), method: :delete, class: "btn btn-primary" %>
-                <% else %>
-                    <%= link_to 'フォローする', users_user_relationships_path(user.id), method: :POST, class: "btn btn-success" %>
-                <% end %>
+                <div id="follew_btn_<%= user.id %>">
+                    <%= render 'follow', user: user %>
+                </div>
             <% end %>
-    </div>
+</div>
     <% if @user == current_user %>
         <div class='row'>
             <div class="col-md-3">
