@@ -3,11 +3,10 @@
     <h2>お問合せ内容入力画面</h2>
   </div>
 </div>
-
+<%= render '/layouts/errors', obj: @contact %>
 <div class="row mt-3">
   <div class="col-md-5 offset-3">
     <%= form_with model:@contact, url: users_contacts_create_path, local: :true do |f| %>
-      <%= render '/layouts/errors', obj: @contact %>
     <div class="form-group">
       <%= f.label :email, '返信先メールアドレス' %>
       <%= f.text_field :email, class: 'form-control' %>
