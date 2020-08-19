@@ -67,7 +67,8 @@ class Users::UsersController < ApplicationController
     def update
         @user = User.find(params[:id])
         if @user.update(user_params)
-            redirect_to users_user_path(@user), notice: "更新完了"
+            flash.now[:notice] = '更新完了'
+            redirect_to users_user_path(@user)
         else
             render 'users/users/edit'
         end
