@@ -12,9 +12,8 @@ class Board < ApplicationRecord
     validates :title,uniqueness: { case_sensitive: :false }, presence: true, length: { maximum: 33 } 
     validates :introduction, presence: true, length: { maximum: 53 }
     # validate :tag_holdings
+    validate :board_holdings
 
-    
-    
 
     #いいね機能と同様にメソッドの引数にログインユーザーを与えて、ブックマークの外部キーが存在しているか確認している。
     def bookmark_by?(user)
@@ -64,4 +63,11 @@ class Board < ApplicationRecord
     #   errors.add(:tags, "の設定は1つ以上５以下でお願い致します") if tags.size < 1
     #   errors.add(:tags, "は5個までです") if tags.size > 5
     # end
+    private 
+    def board_holdings
+      # コントローラーで定義している為、bulidでcurrent_userを使用している為、currentは不要、userで取得可能。
+      if user.boards.count >= 5
+        errors.add(:_e_, "スレッドは５個まででお願い致します")
+      end
+    end
 end
