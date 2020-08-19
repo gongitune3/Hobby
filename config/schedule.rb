@@ -35,7 +35,7 @@ if rails_env.to_sym != :development
     every 1.day do
         begin
                                         # 実行する時にに"RAILS_ENV"を見る様に
-            rake 'delete:delete_board', :environment_variable => "RAILS_ENV", :environment => "development"
+            rake 'delete:delete_board', :environment_variable => "RAILS_ENV", :environment => "production"
         rescue => e
             Rails.logger.error("aborted rake delete task")
             raise e
@@ -44,7 +44,7 @@ if rails_env.to_sym != :development
 
     every 30.minutes do
         begin
-            rake 'count_stop:delete_board', :environment_variable => "RAILS_ENV", :environment => "development"
+            rake 'count_stop:delete_board', :environment_variable => "RAILS_ENV", :environment => "production"
             # エラーの例外クラスが来る
         rescue => e 
             Rails.logger.error("aborted rake delete task")
