@@ -8,9 +8,10 @@ class Contact < ApplicationRecord
     	対応済み: 2
     }
 
-    enum type: {
+    enum category: {
         スレッド・レス: 0,
         Hobby: 1,
         その他: 2
     }
+
 end

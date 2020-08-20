@@ -27,8 +27,8 @@ rails_env = ENV['RAILS_ENV'] || :development
 # cronを実行する環境変数をセット→起動サーバーを定義
 set :environment, rails_env
 # cronのログの吐き出し場所
-set :output, "/home/ec2-user/Hobby/current/log/cron.log"
-
+set :output, { standard: "/home/ec2-user/Hobby/current/log/#{@environment}/log/whenever.log", error: "/home/ec2-user/Hobby/current/log/#{@environment}/whenever_error.log" }
+puts Time.now
 # staging環境のみで実行、オブジェクトの指定
 if rails_env.to_sym != :development
 
