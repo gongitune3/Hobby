@@ -92,3 +92,5 @@ gem 'devise-i18n'
 gem 'devise-i18n-views'
 
 gem 'whenever', require: false
+
+gem 'enum_help'

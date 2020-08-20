@@ -12,3 +12,8 @@ a:
         comment: コメント
       user:
         nickname: ハンドルネーム
+
+ja:
+  enums:
+    contact:
+      status:
