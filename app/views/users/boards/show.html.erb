@@ -16,6 +16,10 @@
                     <% @tags.each do |tag| %>
                         <%= link_to tag.name, users_tags_path(tag: tag.name) %>
                     <% end %>
+                    <i class="ml-2">スレッド作成者:</i>
+                    <%= link_to users_user_path(@board.user) do %>
+                        <%= @board.user.nickname %>
+                    <% end %>
                     <% if user_signed_in? %>
                         <% if @board.user_id == current_user.id %>
                             <button type="button" class="btn btn-danger ml-2" data-toggle="modal" data-target="#modal1">

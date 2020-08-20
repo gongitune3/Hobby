@@ -16,7 +16,7 @@
                       <%= link_to " マイページ", users_user_path(current_user.id), :style=>"color:#222222;"  %>
                     </li>
                     <li>
-                      <%= link_to " about", users_about_path, :style=>"color:#222222;"  %>
+                      <%= link_to " about", users_homes_about_path, :style=>"color:#222222;"  %>
                     </li>
                       <%= link_to "スレッド一覧", users_boards_path, :style=>"color:#111111;"  %>
                     </li>
@@ -75,7 +75,7 @@
                       <%= link_to "ログイン", new_user_session_path, :style=>"color:#222222;" %>
                     </li>
                     <li>
-                      <%= link_to " about", users_about_path, :style=>"color:#222222;"  %>
+                      <%= link_to " about", users_homes_about_path, :style=>"color:#222222;"  %>
                     </li>
                     <li class="nav-item">
                       <%= link_to "スレッド一覧", users_boards_path, :style=>"color:#111111;" %>
