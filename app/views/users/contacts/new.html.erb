@@ -13,7 +13,7 @@
     </div>
     <div class="fieldmt-4">
       <%= f.label :"問合せ種別を選択してください" %>
-      <%= f.select :category, [["1", "1"],["2","2"]], class: 'form-control' %>
+      <%= f.select :category, [["スレッド・レスについて", "0"],["Hobby/等アプリについて","1"],["その他","2"]], class: 'form-control' %>
     </div>
     <div class="field mt-2">
       <%= f.label :"返信が必要な場合はチェックを入れてください" %>
@@ -22,6 +22,29 @@
     <div class="form-group pt-5">
       <%= f.label :message, 'お問い合わせ内容' %>
       <%= f.text_area :message, size: '10x5', class: 'form-control' %>
+    </div>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  Launch demo modal
+</button>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            ...
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
     </div>
     <%= f.submit '送信', class: "btn btn-primary" %>
   <% end %>
