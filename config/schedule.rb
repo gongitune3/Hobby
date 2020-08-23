@@ -20,19 +20,22 @@
 # Learn more: http://github.com/javan/whenever
 
 
-require "/home/ec2-user/Hobby/current/config/environment.rb"
+# require "/home/ec2-user/Hobby/current/config/environment.rb"
+
+require "/home/vagrant/work/Hobby/config/environment.rb"
 # cronを実行する環境変数 中がproductionではなければRAILS_ENVからであればdevelopmentが代入される。
 # railsの起動方法をどっちで起動しているかを確認している
 rails_env = ENV['RAILS_ENV'] || :development
 # cronを実行する環境変数をセット→起動サーバーを定義
 set :environment, rails_env
 # cronのログの吐き出し場所
-set :output, { standard: "/home/ec2-user/Hobby/current/log/#{@environment}/whenever.log", error: "/home/ec2-user/Hobby/current/log/#{@environment}/whenever_error.log" }
+# set :output, { standard: "/home/ec2-user/Hobby/current/log/#{@environment}/whenever.log", error: "/home/ec2-user/Hobby/current/log/#{@environment}/whenever_error.log" }
+set :output, { standard: "/home/vagrant/work/Hobby/log/error.log", error: "/home/vagrant/work/Hobby/log/error.log" }
 puts Time.now
 # staging環境のみで実行、オブジェクトの指定
-if rails_env.to_sym != :development
+# if rails_env.to_sym != :development
 
-    every 1.day do
+    every 1.minutes do
         begin
                                         # 実行する時にに"RAILS_ENV"を見る様に
             rake 'delete:delete_board', :environment_variable => "RAILS_ENV", :environment => "production"
@@ -42,7 +45,7 @@ if rails_env.to_sym != :development
         end
     end
 
-    every 30.minutes do
+    every 1.minutes do
         begin
             rake 'count_stop:delete_board', :environment_variable => "RAILS_ENV", :environment => "production"
             # エラーの例外クラスが来る
@@ -52,4 +55,4 @@ if rails_env.to_sym != :development
         end
     end
 
-end
+# end
