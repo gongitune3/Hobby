@@ -33,14 +33,14 @@ set :environment, rails_env
 # cronのログの吐き出し場所
 Dir.mkdir("/home/ec2-user/Hobby/current/log/#{@environment}/#{Time.now.strftime('%Y%m%d')}")
 
-set :output, { standard: "/home/ec2-user/Hobby/current/log/#{@environment}/#{Time.now.strftime('%Y%m%d')}/whenever.log", error: "/home/ec2-user/Hobby/current/log/#{@environment}/whenever_error.log" }
+set :output, { standard: "/home/ec2-user/Hobby/current/log/#{@environment}/#{Time.now.strftime('%Y%m%d')}/whenever.log", error: "/home/ec2-user/Hobby/current/log/#{@environment}/#{Time.now.strftime('%Y%m%d')}/whenever_error.log" }
 # テスト用
 # set :output, { standard: "/home/vagrant/work/Hobby/log/error.log", error: "/home/vagrant/work/Hobby/log/error.log" }
 puts Time.now
 # staging環境のみで実行、オブジェクトの指定
-# if rails_env.to_sym != :development
+if rails_env.to_sym != :development
 
-    every 1.minutes do
+    every 1.day do
         begin
                                         # 実行する時にに"RAILS_ENV"を見る様に
             rake 'delete:delete_board', :environment_variable => "RAILS_ENV", :environment => "production"
@@ -50,7 +50,7 @@ puts Time.now
         end
     end
 
-    every 1.minutes do
+    every 30.minutes do
         begin
             rake 'count_stop:delete_board', :environment_variable => "RAILS_ENV", :environment => "production"
             # エラーの例外クラスが来る
@@ -60,4 +60,4 @@ puts Time.now
         end
     end
 
-# end
+end
