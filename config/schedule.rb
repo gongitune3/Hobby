@@ -19,18 +19,22 @@
 
 # Learn more: http://github.com/javan/whenever
 
+# 本番環境用
+require "/home/ec2-user/Hobby/current/config/environment.rb"
 
-# require "/home/ec2-user/Hobby/current/config/environment.rb"
+# テスト用
+# require "/home/vagrant/work/Hobby/config/environment.rb"
 
-require "/home/vagrant/work/Hobby/config/environment.rb"
 # cronを実行する環境変数 中がproductionではなければRAILS_ENVからであればdevelopmentが代入される。
 # railsの起動方法をどっちで起動しているかを確認している
 rails_env = ENV['RAILS_ENV'] || :development
 # cronを実行する環境変数をセット→起動サーバーを定義
 set :environment, rails_env
 # cronのログの吐き出し場所
-# set :output, { standard: "/home/ec2-user/Hobby/current/log/#{@environment}/whenever.log", error: "/home/ec2-user/Hobby/current/log/#{@environment}/whenever_error.log" }
-set :output, { standard: "/home/vagrant/work/Hobby/log/error.log", error: "/home/vagrant/work/Hobby/log/error.log" }
+
+set :output, { standard: "/home/ec2-user/Hobby/current/log/#{@environment}/whenever.log", error: "/home/ec2-user/Hobby/current/log/#{@environment}/whenever_error.log" }
+# テスト用
+# set :output, { standard: "/home/vagrant/work/Hobby/log/error.log", error: "/home/vagrant/work/Hobby/log/error.log" }
 puts Time.now
 # staging環境のみで実行、オブジェクトの指定
 # if rails_env.to_sym != :development
