@@ -31,11 +31,11 @@ rails_env = ENV['RAILS_ENV'] || :development
 # cronを実行する環境変数をセット→起動サーバーを定義
 set :environment, rails_env
 # cronのログの吐き出し場所
-if !Dir.exist?("/home/ec2-user/Hobby/current/log/#{@environment}/#{Time.now.strftime('%Y%m%d')}")
-    Dir.mkdir("/home/ec2-user/Hobby/current/log/#{@environment}/#{Time.now.strftime('%Y%m%d')}")
+if !Dir.exist?("/home/ec2-user/Hobby/current/log/production/#{Time.now.strftime('%Y%m%d')}")
+    Dir.mkdir("/home/ec2-user/Hobby/current/log/production/#{Time.now.strftime('%Y%m%d')}")
 end
 
-set :output, { standard: "/home/ec2-user/Hobby/current/log/#{@environment}/#{Time.now.strftime('%Y%m%d')}/whenever.log", error: "/home/ec2-user/Hobby/current/log/#{@environment}/#{Time.now.strftime('%Y%m%d')}/whenever_error.log" }
+set :output, { standard: "/home/ec2-user/Hobby/current/log/production/#{Time.now.strftime('%Y%m%d')}/whenever.log", error: "/home/ec2-user/Hobby/current/log/production/#{Time.now.strftime('%Y%m%d')}/whenever_error.log" }
 # テスト用
 # set :output, { standard: "/home/vagrant/work/Hobby/log/error.log", error: "/home/vagrant/work/Hobby/log/error.log" }
 puts Time.now
