@@ -3,15 +3,15 @@ class Contact < ApplicationRecord
     validates :message, presence: true
 
     enum status: {
-    	未対応: 0,
-    	審議中: 1,
-    	対応済み: 2
+    	未対応: "0",
+    	審議中: "1",
+    	対応済み: "2"
     }
 
     enum category: {
-        スレッド・レス: 0,
-        Hobby: 1,
-        その他: 2
+        スレッド・レス: "0",
+        Hobby: "1",
+        その他: "2"
     }
 
 end

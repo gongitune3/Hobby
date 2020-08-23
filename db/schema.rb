@@ -62,9 +62,9 @@ ActiveRecord::Schema.define(version: 2020_08_20_114137) do
     t.text "message"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "category"
+    t.string "category", default: "0", null: false
     t.boolean "reply", default: false, null: false
-    t.integer "status", default: 0, null: false
+    t.string "status", default: "0", null: false
   end
 
   create_table "favorites", force: :cascade do |t|

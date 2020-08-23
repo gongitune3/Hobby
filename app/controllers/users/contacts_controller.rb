@@ -5,8 +5,9 @@ class Users::ContactsController < ApplicationController
   end
 
   def create
+    byebug
     @contact = Contact.new(contact_params)
-    if @contact.save
+    if @contact.save!
       ContactMailer.contact_mail(@contact).deliver
       flash[:success2] = 'お問い合わせを受け付けました'
       redirect_to root_path
@@ -18,7 +19,7 @@ class Users::ContactsController < ApplicationController
   private
 
   def contact_params
-    params.require(:contact).permit(:email, :message, :type, :reply, category: params[:category].to_i)
+    params.require(:contact).permit(:email, :message, :type, :reply, :category, :status)
   end
 
 end

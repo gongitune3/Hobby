@@ -1,5 +1,5 @@
 class AddStatusToContacts < ActiveRecord::Migration[5.2]
   def change
-    add_column :contacts, :status, :integer, default: false, null: false
+    add_column :contacts, :status, :string, default: '0', null: false
   end
 end
