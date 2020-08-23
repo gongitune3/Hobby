@@ -70,7 +70,7 @@ gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"
 gem "refile-s3"
 
-gem 'bootstrap', '~> 4.1.1'
+gem 'bootstrap', '~> 4.3.1'
 gem 'jquery-rails'
 
 gem 'kaminari','~> 1.2.1'
