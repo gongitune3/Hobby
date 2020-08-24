@@ -14,14 +14,29 @@ Rails.application.routes.draw do
 
   root 'users/homes#top'
 
-  # 管理者側root
+  # 管理者側
   namespace :admins do
     root 'homes#top'
-    get 'contacts/new'
-    get 'contacts/create'
+    resources :contacts,only: [:show,:index,:edit,:update,:destroy]
+    resources :users,only: [:show,:index,:edit,:update,:destroy] do
+      resource :relationships, only: [:create, :destroy]
+      get 'follows' => 'relationships#follower', as: 'follows'
+      get 'followers' => 'relationships#followed', as: 'followers'
+    end
+    get 'tags' => 'boards#tag'
+    get 'bookmarks' => 'boards#bookmark'
+    resources :boards, shallow: true do
+      resource :bookmarks, only: [:create,:destroy]
+      resources :board_comments, only: [:create,:destroy] do
+        resource :favorites, only: [:create,:destroy]
+      end
+    end
+    resource :board_tags, only: [:create,:destroy]
+    resources :tags
+    get 'search/search'
   end
 
-  # ユーザー側root
+  # ユーザー側
   namespace :users do
     resources :users,only: [:show,:index,:edit,:update] do
       resource :relationships, only: [:create, :destroy]
@@ -40,7 +55,6 @@ Rails.application.routes.draw do
 
     resource :board_tags, only: [:create,:destroy]
     resources :tags
-    resources :inquiries, only: [:new,:create]
 
     get 'search' => 'search#search', as: 'search'
     get 'homes/about'

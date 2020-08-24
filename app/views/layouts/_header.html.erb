@@ -40,23 +40,33 @@
       <% elsif admin_signed_in? %>
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <% link_to admin_root_path %>
           </li>
-              <li class="nav-item">
-                <%= link_to "新規登録", user_user(current_user.id), class: "text-warning" %>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Dropdown
+              <li class="nav-item dropdown ml-5">
+                <a class="nav-link dropdown-toggle h4" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  MENU
                 </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="#">Action</a>
-                  <a class="dropdown-item" href="#">Another action</a>
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="#">Something else here</a>
-                </div>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                  <ul>
+                    <li>
+                      <%= link_to "", new_user_registration_path, :style=>"color:#222222;" %>
+                    </li>
+                    <li class="nav-item">
+                      <%= link_to "ログイン", new_user_session_path, :style=>"color:#222222;" %>
+                    </li>
+                    <li>
+                      <%= link_to " about", users_homes_about_path, :style=>"color:#222222;"  %>
+                    </li>
+                    <li class="nav-item">
+                      <%= link_to "スレッド一覧", users_boards_path, :style=>"color:#111111;" %>
+                    </li>
+                  </ul>
+                  </div>
               </li>
-              
+        </ul>
+        <ul class="mx-auto">
+          <li>
+            <%= link_to image_tag("logo.png",:width => "200",:height => "60"), root_path %>
+          </li>
         </ul>
       <% else %>
         <ul class="navbar-nav mr-auto">
