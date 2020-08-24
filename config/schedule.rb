@@ -65,7 +65,7 @@ if rails_env.to_sym != :development
         end
     end
 
-    every 1.minutes do
+    every 1.week do
         command '/usr/bin/zip -r /home/ec2-user/Hobby/current/log/production/compression.zip /home/ec2-user/Hobby/current/log/production/20200823', :environment_variable => "RAILS_ENV", :environment => "production"
     end
 
