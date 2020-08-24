@@ -40,4 +40,4 @@ Dir.glob("lib/capistrano/tasks/*.rake").each { |r| import r }
 require "capistrano/puma"
 install_plugin Capistrano::Puma, load_hooks: true
 
-# require 'whenever/capistrano'
+require 'whenever/capistrano'
