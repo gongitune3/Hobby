@@ -37,6 +37,7 @@ if !Dir.exist?("/home/ec2-user/Hobby/current/log/production/#{Time.now.strftime(
     Dir.mkdir("/home/ec2-user/Hobby/current/log/production/#{Time.now.strftime('%Y%m%d')}")
 end
 
+# 本番用
 set :output, { standard: "/home/ec2-user/Hobby/current/log/production/#{Time.now.strftime('%Y%m%d')}/whenever.log", error: "/home/ec2-user/Hobby/current/log/production/#{Time.now.strftime('%Y%m%d')}/whenever_error.log" }
 # テスト用
 # set :output, { standard: "/home/vagrant/work/Hobby/log/error.log", error: "/home/vagrant/work/Hobby/log/error.log" }
@@ -49,7 +50,7 @@ if rails_env.to_sym != :development
                                         # 実行する時にに"RAILS_ENV"を見る様に
             rake 'delete:delete_board', :environment_variable => "RAILS_ENV", :environment => "production"
         rescue => e
-            Rails.logger.error("aborted rake delete task")
+            Rails.logger.error("aborted rake delete_board task")
             raise e
         end
     end
@@ -59,9 +60,13 @@ if rails_env.to_sym != :development
             rake 'count_stop:delete_board', :environment_variable => "RAILS_ENV", :environment => "production"
             # エラーの例外クラスが来る
         rescue => e 
-            Rails.logger.error("aborted rake delete task")
+            Rails.logger.error("aborted rake count_stop task")
             raise e
         end
+    end
+
+    every 1.minutes do
+        command '/usr/bin/zip -r compression.zip 20200823', :environment_variable => "RAILS_ENV", :environment => "production"
     end
 
 end
