@@ -1,2 +1,16 @@
-<h1>Admins::Contacts#new</h1>
-<p>Find me in app/views/admins/contacts/new.html.erb</p>
+<div class="row">
+      <div class="col">
+            
+      </div>
+</div>
+
+
+create_table "contacts", force: :cascade do |t|
+    t.string "email"
+    t.text "message"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "category", default: "0", null: false
+    t.boolean "reply", default: false, null: false
+    t.string "status", default: "0", null: false
+  end

@@ -1,3 +1,36 @@
-<div class="row">
-      <div class="col"></div>
+<div class="col">
+      <div class="col-md-12">
+            <table class="table">
+                  <thead class="thead-dark">
+                          <tr>
+                              <th>ステータス</th><th>種別</th><th>受付日時</th><th>メアド</th><th>返信??</th>
+                          </tr>
+                  </thead>
+                  <% @contacts.each do |contact| %>
+                      <tr>
+                          <td>
+                              <%= link_to  contact.status, admins_contact_path(contact.id)  %>
+                          </td>
+                          <td>
+                              <%= contact.category %>
+                          </td>
+                          <td>
+                              <%= contact.created_at.to_s(:datetime_jp) %>
+                          </td>
+                          <td>
+                              <%= contact.email %>
+                          </td>
+                          <td>
+                              <% if contact.reply == true %>
+                                    <i class="fas fa-check"></i>
+                              <% else %>
+                                    <i class="far fa-times-circle"></i>
+                              <% end %>
+                          </td>
+                      </tr>
+                  <% end %>
+                  <%# <%= paginate boards %>
+            </table>
+      </div>
 </div>
+

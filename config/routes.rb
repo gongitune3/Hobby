@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
   devise_for :users, controllers: { 
     sessions: 'users/sessions',
     regisrrations: 'users/regisrrations'
@@ -10,8 +12,6 @@ Rails.application.routes.draw do
     regisrrations: 'admins/regisrrations'
   }
   
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-
   root 'users/homes#top'
 
   # 管理者側

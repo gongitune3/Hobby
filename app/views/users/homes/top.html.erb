@@ -51,23 +51,21 @@
             </div>
         </div>
     </div>
+
     <div class="row">
         <div class="col-md-10 offset-4">
-            <p class="text-primary">
+            <p class="text-info">
                 <%= flash[:notice] %>
                 <%= flash[:success2] %>
             </p>
         </div>
     </div>
-    
-
-
 
 <script>
 const texts = document.querySelectorAll(".text");
 texts.forEach((text,index) => {
-
-const aa = text.textContent.split("");
+    
+    const aa = text.textContent.split("");
 text.textContent = "";
 let loc = 0;
 let timeoutId;

@@ -43,21 +43,21 @@
           </li>
               <li class="nav-item dropdown ml-5">
                 <a class="nav-link dropdown-toggle h4" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  MENU
+                  管理者メニュー
                 </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                   <ul>
                     <li>
-                      <%= link_to "", new_user_registration_path, :style=>"color:#222222;" %>
+                      <%= link_to "問合せ一覧", admins_contacts_path, :style=>"color:#222222;" %>
                     </li>
                     <li class="nav-item">
-                      <%= link_to "ログイン", new_user_session_path, :style=>"color:#222222;" %>
+                      <%= link_to "スレッド一覧",  admins_boards_path, :style=>"color:#111111;" %>
                     </li>
                     <li>
-                      <%= link_to " about", users_homes_about_path, :style=>"color:#222222;"  %>
+                      <%= link_to "利用者一覧", admins_users_path, :style=>"color:#222222;" %>
                     </li>
                     <li class="nav-item">
-                      <%= link_to "スレッド一覧", users_boards_path, :style=>"color:#111111;" %>
+                      <%= link_to "管理者ログアウト", destroy_admin_session_path, method: :delete, :style=>"color:red;" %>
                     </li>
                   </ul>
                   </div>
