@@ -20,7 +20,7 @@
                 </tr>
                 <tr>
                     <th>bookmarks</th>
-                    <th><%= link_to user.bookmarks.count, users_bookmarks_path %></th>
+                    <th><%= link_to user.bookmarks.count, users_user_bookmarks_path(user) %></th>
                 </tr>
             </table>
         </div>

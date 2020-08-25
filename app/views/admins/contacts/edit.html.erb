@@ -1,28 +1,28 @@
 <div class="row">
-      <div class="col-6 offset-3 content_mailer">
+      <div class="col-20 offset-1 content_mailer">
              <%= render '/layouts/errors', obj: @contact %>
             <table class="table table-striped">
                   <tbody>
                         <tr>
-                              <th>メアド</th>
+                              <th class="col-xs-2">メアド</th>
                               <td><%= @contact.email %></td>
                         </tr>
                         <tr>
-                              <th>本文</th>
+                              <th class="col-xs-2">本文</th>
                               <td><%= @contact.message %></td>
                         </tr>
                         <tr>
-                              <th>問合せ日時</th>
-                              <td><%= @contact.created_at %></td>
+                              <th class="col-xs-2">問合せ日時</th>
+                              <td><%= @contact.created_at.to_s(:datetime_jp) %></td>
                         </tr>
                         <tr>
-                              <th>種別</th>
+                              <th class="col-xs-2">種別</th>
                               <td><%= @contact.category %></td>
                         </tr>
                         <tr>
-                              <th>返信有無</th>
+                              <th class="col-xs-2">返信有無</th>
                               <td>
-                                    <% if contact.reply == true %>
+                                    <% if @contact.reply == true %>
                                           <i class="fas fa-check"></i>
                                     <% else %>
                                           <i class="fas fa-comment-slash"></i>
@@ -30,7 +30,7 @@
                               </td>
                         </tr>
                         <tr>
-                              <th>ステータス</th>
+                              <th class="col-xs-2">ステータス</th>
                               <td><%= @contact.status %></td>
                         </tr>
                   </tbody>

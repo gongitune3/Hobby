@@ -13,7 +13,9 @@ class Users::BoardsController < ApplicationController
 
     #Userモデルでhas many throughを定義したことにより、current_user.bookmark_boardsでデータを取得できる。
     def bookmark
-        @boards = current_user.bookmark_boards.includes(:user)
+        user = User.find(params[:user_id])
+        @boards = user.bookmark_boards.includes(:user)
+        # @boards = current_user.bookmark_boards.includes(:user)
     end
 
     def tag

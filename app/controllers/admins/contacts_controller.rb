@@ -2,7 +2,8 @@ class Admins::ContactsController < ApplicationController
 
   before_action :authenticate_admin!
   def index
-    @contacts = Contact.all
+    # @contacts = Contact.page(params[:page]).per(PER).order(created_at: :desc)
+    @contacts = Contact.all.order(created_at: :desc)
   end
   
   def edit
@@ -10,10 +11,11 @@ class Admins::ContactsController < ApplicationController
     @change_contact = Contact.new
   end
 
+
   def update
     @contat = Contact.find(params[:id])
       if @contat.update(contact_params)
-          flash.now[:notice] = '更新完了'
+          flash[:notice]= '更新完了'
           redirect_to admins_contacts_path
       else
           render 'admins/contacts/edit'
