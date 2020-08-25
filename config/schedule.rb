@@ -67,7 +67,7 @@ if rails_env.to_sym != :development
 
     every 1.week do
         begin
-            command "/usr/bin/zip -r /home/ec2-user/Hobby/current/log/production/compression.zip /home/ec2-user/Hobby/current/log/production/#{Time.now.strftime('%Y%m%d') - 7}", :environment_variable => "RAILS_ENV", :environment => "production"
+            command "/usr/bin/zip -r /home/ec2-user/Hobby/current/log/production/#{(Time.now - 7 ).strftime('%Y%m%d')}.zip /home/ec2-user/Hobby/current/log/production/#{(Time.now - 7 ).strftime('%Y%m%d')}", :environment_variable => "RAILS_ENV", :environment => "production"
         rescue => e
             Rails.logger.error("aborted  command zip compression ")
             raise e
