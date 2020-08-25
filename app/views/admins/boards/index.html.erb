@@ -1,0 +1,28 @@
+<table class="table">
+            <thead class="thead-dark">
+                    <tr>
+                        <th>スレタイ</th><th>タグ</th><th>about</th><th align="left">ブックマーク数</th>
+                    </tr>
+            </thead>
+            <% @boards.each do |board| %>
+                <tr>
+                    <td>
+                        <%= link_to board.title, admins_board_path(board.id) %>
+                    </td>
+                    <td>
+                        <% board.tags.each do |tag| %>
+                                <%= tag.name %>
+                            <% end %>
+                    </td>
+                    <td>
+                        <%= board.introduction %>
+                    </td>
+                    <td align="left">
+                        <span id="bookmark_buttons_<%= board.id %>">
+                            <%= render 'users/boards/bookmark', board: board %>
+                        </span>
+                    </td>
+                </tr>
+            <% end %>
+            <%# <%= paginate boards %>
+</table>

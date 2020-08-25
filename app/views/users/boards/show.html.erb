@@ -2,9 +2,7 @@
         <div class="col-md-8 offset-1 fix">
             <h5 class="mb-2">スレッド内レス数：<%= @board.board_comments.count %></h5>
             <i>ブックマーク数:</i>
-            <span id="bookmark_buttons_<%= @board.id %>">
-                <%= render 'users/boards/bookmark', board: @board %>
-            </span>
+            <%= @board.bookmarks.count %>
         </div>
     </div>
     <div class="row mt-3">
@@ -14,16 +12,14 @@
                     <h2 class="mt-2" style="display:inline-block"><%= @board.title %></h2>
                     <i class="ml-2">タグ:</i>
                     <% @tags.each do |tag| %>
-                        <%= link_to tag.name, users_tags_path(tag: tag.name) %>
+                        <%= link_to tag.name, amidns_tags_path(tag: tag.name) %>
                     <% end %>
                     <i class="ml-2">スレッド作成者:</i>
-                    <%= link_to users_user_path(@board.user) do %>
+                    <%= link_to admins_user_path(@board.user) do %>
                         <%= @board.user.nickname %>
                     <% end %>
                         <div class="row">
                             <div class="col-5 mt-4">
-                                <% if user_signed_in? %>
-                                    <% if @board.user_id == current_user.id %>
                                         <button type="button" class="btn btn-danger ml-2" data-toggle="modal" data-target="#modal1">
                                             スレッド削除
                                         </button>
@@ -39,11 +35,12 @@
                                                         </div>
                                                         <div class="modal-body">
                                                             スレッドを削除しますと、復元ができません。<br>
+                                                            ユーザーへの通告ないしは、規約に促しているでしょうか？<br>
                                                             宜しければ下記の削除のボタンをクリックしてください。
                                                         </div>
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">キャンセル</button>
-                                                            <%= link_to users_board_path(@board.id), method: :delete do %>
+                                                            <%= link_to admins_board_path(@board.id), method: :delete do %>
                                                                 <button type="button" class="btn btn-danger">削除</button>
                                                             <% end %>
                                                         </div>
