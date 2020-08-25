@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
             root_path
         end
     end
-    
+
     def after_sign_in_path_for(resource) #ログインした時の遷移先
         case resource
         when Admin
@@ -17,8 +17,6 @@ class ApplicationController < ActionController::Base
             root_path
         end
     end
-
-
 
     def configure_permitted_parameters
         devise_parameter_sanitizer.permit(:sign_up, keys: [:email, :profile_image, :nickname, :introduction])

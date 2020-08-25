@@ -47,7 +47,7 @@ if rails_env.to_sym != :development
 
     every 1.day do
         begin
-                                        # 実行する時にに"RAILS_ENV"を見る様に
+            # 実行する時にに"RAILS_ENV"を見る様に
             rake 'delete:delete_board', :environment_variable => "RAILS_ENV", :environment => "production"
         rescue => e
             Rails.logger.error("aborted rake delete_board task")
@@ -66,7 +66,12 @@ if rails_env.to_sym != :development
     end
 
     every 1.week do
-        command '/usr/bin/zip -r /home/ec2-user/Hobby/current/log/production/compression.zip /home/ec2-user/Hobby/current/log/production/20200823', :environment_variable => "RAILS_ENV", :environment => "production"
+        begin
+            command '/usr/bin/zip -r /home/ec2-user/Hobby/current/log/production/compression.zip /home/ec2-user/Hobby/current/log/production/20200823', :environment_variable => "RAILS_ENV", :environment => "production"
+        rescue => e 
+            Rails.logger.error("aborted  command zip compression ")
+            raise e
+        end
     end
 
 end

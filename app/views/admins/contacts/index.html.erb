@@ -1,5 +1,6 @@
 <div class="col">
       <div class="col-md-12">
+            <%= flash[:notice] %>
             <table class="table">
                   <thead class="thead-dark">
                           <tr>
@@ -9,7 +10,7 @@
                   <% @contacts.each do |contact| %>
                       <tr>
                           <td>
-                              <%= link_to  contact.status, admins_contact_path(contact.id)  %>
+                              <%= link_to  contact.status, edit_admins_contact_path(contact.id)  %>
                           </td>
                           <td>
                               <%= contact.category %>
@@ -24,7 +25,7 @@
                               <% if contact.reply == true %>
                                     <i class="fas fa-check"></i>
                               <% else %>
-                                    <i class="far fa-times-circle"></i>
+                                    <i class="fas fa-comment-slash"></i>
                               <% end %>
                           </td>
                       </tr>
