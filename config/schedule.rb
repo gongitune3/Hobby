@@ -65,15 +65,24 @@ if rails_env.to_sym != :development
         end
     end
 
-    every 1.minutes do
+    every 1.week do
         begin
-            # command "/usr/bin/zip -r /home/ec2-user/Hobby/current/log/production/#{(Date.today - 7 ).strftime('%Y%m%d')}.zip /home/ec2-user/Hobby/current/log/production/#{(Date.today - 7 ).strftime('%Y%m%d')}", :environment_variable => "RAILS_ENV", :environment => "production"
-            command "/usr/bin/zip -rm /home/ec2-user/Hobby/current/log/production/#{(Date.today - 1 ).strftime('%Y%m%d')}.zip /home/ec2-user/Hobby/current/log/production/#{(Date.today - 1 ).strftime('%Y%m%d')}", :environment_variable => "RAILS_ENV", :environment => "production"
+            command "/usr/bin/zip -r /home/ec2-user/Hobby/current/log/production/#{(Date.today - 7 ).strftime('%Y%m%d')}.zip /home/ec2-user/Hobby/current/log/production/#{(Date.today - 7 ).strftime('%Y%m%d')}", :environment_variable => "RAILS_ENV", :environment => "production"
+            # command "/usr/bin/zip -r /home/ec2-user/Hobby/current/log/production/#{(Date.today - 2 ).strftime('%Y%m%d')}.zip /home/ec2-user/Hobby/current/log/production/#{(Date.today - 2 ).strftime('%Y%m%d')}", :environment_variable => "RAILS_ENV", :environment => "production"
         rescue => e
             Rails.logger.error("aborted  command zip compression ")
             raise e
         end
     end
 
+    # every 8.day do
+    #     begin
+    #         # command "/usr/bin/zip -r /home/ec2-user/Hobby/current/log/production/#{(Date.today - 7 ).strftime('%Y%m%d')}.zip /home/ec2-user/Hobby/current/log/production/#{(Date.today - 7 ).strftime('%Y%m%d')}", :environment_variable => "RAILS_ENV", :environment => "production"
+    #         command "/bin/rm -rf /home/ec2-user/Hobby/current/log/production/#{(Date.today - 2 ).strftime('%Y%m%d')}", :environment_variable => "RAILS_ENV", :environment => "production"
+    #     rescue => e
+    #         Rails.logger.error("aborted  command  delete dir")
+    #         raise e
+    #     end
+    # end
 
 end

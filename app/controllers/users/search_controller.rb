@@ -27,11 +27,11 @@ class Users::SearchController < ApplicationController
           if method == 'perfect'
             Tag.where(name: content)
           elsif method == 'forward'
-            Tag.where('title LIKE ?', content+'%')
+            Tag.where('name LIKE ?', content+'%')
           elsif method == 'backward'
-            Tag.where('title LIKE ?', '%'+content)
+            Tag.where('name LIKE ?', '%'+content)
           else
-            Tag.where('title LIKE ?', '%'+content+'%')
+            Tag.where('name LIKE ?', '%'+content+'%')
           end
         end
         # elsif model == 'tag'
