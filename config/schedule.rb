@@ -65,16 +65,7 @@ if rails_env.to_sym != :development
         end
     end
 
-    every 1.week do
-        begin
-            command "/usr/bin/zip -r /home/ec2-user/Hobby/current/log/production/#{(Date.today - 7 ).strftime('%Y%m%d')}.zip /home/ec2-user/Hobby/current/log/production/#{(Date.today - 7 ).strftime('%Y%m%d')}", :environment_variable => "RAILS_ENV", :environment => "production"
-        rescue => e
-            Rails.logger.error("aborted  command zip compression ")
-            raise e
-        end
-    end
-
-    every 1.week do
+    every 1.minutes do
         begin
             # command "/usr/bin/zip -r /home/ec2-user/Hobby/current/log/production/#{(Date.today - 7 ).strftime('%Y%m%d')}.zip /home/ec2-user/Hobby/current/log/production/#{(Date.today - 7 ).strftime('%Y%m%d')}", :environment_variable => "RAILS_ENV", :environment => "production"
             command "/usr/bin/zip -r /home/ec2-user/Hobby/current/log/production/#{(Date.today - 1 ).strftime('%Y%m%d')}.zip /home/ec2-user/Hobby/current/log/production/#{(Date.today - 1 ).strftime('%Y%m%d')}", :environment_variable => "RAILS_ENV", :environment => "production"
@@ -83,5 +74,6 @@ if rails_env.to_sym != :development
             raise e
         end
     end
+
 
 end
