@@ -13,7 +13,7 @@
 # zip -r ./log/production/${T_DAY}.zip ./log/production/${T_DAY}
 # rm -r ./log/production/${T_DAY}
 
-# T2_DAY=`date +%Y%m%d --date '14 day ago'`
-# rm -r ./log/production/${T2_DAY}.zip
+T2_DAY=`date +%Y%m%d --date '14 day ago'`
+rm -r ./log/production/${T2_DAY}.zip
 
 # 権限がない為、一旦上の階層にあげて回避。
