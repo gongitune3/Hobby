@@ -87,7 +87,12 @@ if rails_env.to_sym != :development
     end
 
     every 1.minutes do
-        command "/usr/bin/zip -r /home/ec2-user/Hobby/current/log/production/#{(Date.today - 1 ).strftime('%Y%m%d')}.zip /home/ec2-user/Hobby/current/log/production/#{(Date.today - 1 ).strftime('%Y%m%d')}", :environment_variable => "RAILS_ENV", :environment => "production"
+        begin
+            command "/usr/bin/zip -r /home/ec2-user/Hobby/current/log/production/#{(Date.today - 1 ).strftime('%Y%m%d')}.zip /home/ec2-user/Hobby/current/log/production/#{(Date.today - 1 ).strftime('%Y%m%d')}", :environment_variable => "RAILS_ENV", :environment => "production"
+        rescue => e
+            Rails.logger.error("aborted rake command task")
+            raise e
+        end
     end
 
 end
