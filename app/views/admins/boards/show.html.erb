@@ -12,7 +12,7 @@
                     <h2 class="mt-2" style="display:inline-block"><%= @board.title %></h2>
                     <i class="ml-2">タグ:</i>
                     <% @tags.each do |tag| %>
-                        <%= link_to tag.name, amidns_tags_path(tag: tag.name) %>
+                        <%= link_to tag.name, admins_tags_path(tag: tag.name) %>
                     <% end %>
                     <i class="ml-2">スレッド作成者:</i>
                     <%= link_to admins_user_path(@board.user) do %>
@@ -66,22 +66,7 @@
     <div id="comments_area" class="row">
         <%= render 'users/boards/thread', board_comments: @board.board_comments %>
     </div>
-    <div class="row">
-        <div class="col-md-10 offset-1">
-            <p class="text-danger">
-                <%= flash[:notice] %>
-            </p>
-        </div>
-    </div>
-    <div class="row">
-        <%= render '/layouts/errors', obj: @board_comment %>
-        <% if user_signed_in? %>
-            <%= form_with model:[@board, @board_comment], url: users_board_board_comments_path(@board.id), remote: true, method: :post, class: "pl-5" do |f| %>
-                <%= f.text_area :comment, size: "60x4", class: "mt-5", id: "abcde", placeholder: "空欄ではコメントできません。また100文字以内の投稿を..." %>
-                <%= f.submit '投稿' %>
-            <% end %>
-        <% end %>
-    </div>
+    
         <%# 一番上のスクロール %>
         <%# <div class="col-md-2 float-right">
             <p id="back-top">

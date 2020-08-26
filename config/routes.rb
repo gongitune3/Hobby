@@ -42,11 +42,10 @@ Rails.application.routes.draw do
       resource :relationships, only: [:create, :destroy]
       get 'follows' => 'relationships#follower', as: 'follows'
       get 'followers' => 'relationships#followed', as: 'followers'
-      get 'bookmarks' => 'boards#bookmark'
     end
 
     get 'tags' => 'boards#tag'
-    # get 'bookmarks' => 'boards#bookmark'
+    get 'bookmarks' => 'boards#bookmark'
     resources :boards, shallow: true do
       resource :bookmarks, only: [:create,:destroy]
       resources :board_comments, only: [:create,:destroy] do

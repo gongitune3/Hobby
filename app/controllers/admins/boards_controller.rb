@@ -10,6 +10,11 @@ class Admins::BoardsController < ApplicationController
             @tags = @board.tags
       end
 
+      def tag
+            @ids = BoardTag.joins(:tag).where("tags.name=?",params[:tag]).pluck(:board_id)
+            @boards = Board.find(@ids)
+      end
+
       def destroy
             board.find(params[:id])
             if board.destroy

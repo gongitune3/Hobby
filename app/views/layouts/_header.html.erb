@@ -95,9 +95,15 @@
               </li>
         </ul>
         <ul class="mx-auto">
-          <li>
-            <%= link_to image_tag("logo.png",:width => "200",:height => "60"), root_path %>
-          </li>
+          <% if admin_signed_in? %>
+            <li>
+              <%= link_to image_tag("logo.png",:width => "200",:height => "60"), admins_root_path %>
+            </li>
+          <% else %>
+            <li>
+              <%= link_to image_tag("logo.png",:width => "200",:height => "60"), root_path %>
+            </li>
+          <% end %>
         </ul>
       <% end %>
       <%= form_with url: users_search_path, method: :get, local: true, class: "form-inline my-2 my-lg-0 justify-content-center" do %>

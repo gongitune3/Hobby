@@ -40,6 +40,14 @@ $(document).ready(function(){
             }
         }, 50);
     });
+
+    $(function (){
+        $("#modal_confirm").on("click", function(){
+          var content_value = $("#content").val();
+          $("#modal_content").html(content_value);
+        });
+      });
+
 });
 
 
