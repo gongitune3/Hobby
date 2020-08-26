@@ -7,7 +7,7 @@
             <% @boards.each do |board| %>
                 <tr>
                     <td>
-                        <%= link_to board.title, admins_board_path(board.id) %>
+                        <%= link_to board.title, edit_admins_board_path(board.id) %>
                     </td>
                     <td>
                         <% board.tags.each do |tag| %>

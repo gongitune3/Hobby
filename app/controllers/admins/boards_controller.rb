@@ -4,7 +4,7 @@ class Admins::BoardsController < ApplicationController
             @boards = Board.all.order(created_at: :desc)
       end
 
-      def edit
-            
+      def show
+            @board = Board.find(params[:id])
       end
 end

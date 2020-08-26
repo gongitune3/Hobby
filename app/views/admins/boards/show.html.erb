@@ -1,0 +1,94 @@
+    <div class="row">
+        <div class="col-md-8 offset-1 fix">
+            <h5 class="mb-2">スレッド内レス数：<%= @board.board_comments.count %></h5>
+            <i>ブックマーク数:</i>
+            <%= @board.bookmarks.count %>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-md-10 offset-1">
+            <div class="row">
+                <div class="col-md-11">
+                    <h2 class="mt-2" style="display:inline-block"><%= @board.title %></h2>
+                    <i class="ml-2">タグ:</i>
+                    <% @tags.each do |tag| %>
+                        <%= link_to tag.name, amidns_tags_path(tag: tag.name) %>
+                    <% end %>
+                    <i class="ml-2">スレッド作成者:</i>
+                    <%= link_to admins_user_path(@board.user) do %>
+                        <%= @board.user.nickname %>
+                    <% end %>
+                        <div class="row">
+                            <div class="col-5 mt-4">
+                                        <button type="button" class="btn btn-danger ml-2" data-toggle="modal" data-target="#modal1">
+                                            スレッド削除
+                                        </button>
+                                            <div class="modal fade" id="modal1" tabindex="-1"
+                                                role="dialog" aria-labelledby="label1" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="label1">スレッドを削除しますか？</h5>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            スレッドを削除しますと、復元ができません。<br>
+                                                            ユーザーへの通告ないしは、規約に促しているでしょうか？<br>
+                                                            宜しければ下記の削除のボタンをクリックしてください。
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">キャンセル</button>
+                                                            <%= link_to admins_board_path(@board.id), method: :delete do %>
+                                                                <button type="button" class="btn btn-danger">削除</button>
+                                                            <% end %>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                    <% end %>
+                                <% end %>
+                            </div>
+                        </div>
+                </div>
+                <%# 一番したにスクロール %>
+                <%# <div class="col-md-1 ">
+                    <a class="bottom-btn" href="#bottom"><span class="fas fa-arrow-circle-down fa-3x" ></span></a>
+                </div> %>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-md-7">
+            <h6>〜スレ説明〜</h6>
+            <p class="board-introduction"><%= @board.introduction %></p>
+        </div>
+    </div>
+    <div id="comments_area" class="row">
+        <%= render 'users/boards/thread', board_comments: @board.board_comments %>
+    </div>
+    <div class="row">
+        <div class="col-md-10 offset-1">
+            <p class="text-danger">
+                <%= flash[:notice] %>
+            </p>
+        </div>
+    </div>
+    <div class="row">
+        <%= render '/layouts/errors', obj: @board_comment %>
+        <% if user_signed_in? %>
+            <%= form_with model:[@board, @board_comment], url: users_board_board_comments_path(@board.id), remote: true, method: :post, class: "pl-5" do |f| %>
+                <%= f.text_area :comment, size: "60x4", class: "mt-5", id: "abcde", placeholder: "空欄ではコメントできません。また100文字以内の投稿を..." %>
+                <%= f.submit '投稿' %>
+            <% end %>
+        <% end %>
+    </div>
+        <%# 一番上のスクロール %>
+        <%# <div class="col-md-2 float-right">
+            <p id="back-top">
+                <a href="#top"><span class="fas fa-arrow-circle-up fa-3x"></span></a>
+            </p> %>
+            <%# 実装未定 %>
+            <%# <%= link_to "スレッド参加ユーザー一覧", path %>
+        <%# </div> %>
