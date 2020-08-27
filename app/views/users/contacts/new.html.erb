@@ -9,19 +9,19 @@
     <%= render '/layouts/errors', obj: @contact %>
     <div class="form-group">
       <%= f.label :email, '返信先メールアドレス' %>
-      <%= f.text_field :email, class: 'form-control' %>
+      <%= f.text_field :email, class: 'form-control', id: 'content1' %>
     </div>
     <div class="fieldmt-4">
       <%= f.label :"問合せ種別を選択してください" %>
-      <%= f.select :category, [["スレッド・レスについて", 0 ],["Hobby/等アプリについて", 1 ],["その他", 2 ]], class: 'form-control' %>
+      <%= f.select :category, [["スレッド・レスについて", 0 ],["Hobby/等アプリについて", 1 ],["その他", 2 ]], class: 'form-control', id: 'content2' %>
     </div>
     <div class="field mt-2">
       <%= f.label :"返信が必要な場合はチェックを入れてください" %>
-      <%= f.check_box :reply %>
+      <%= f.check_box :reply, id: 'content3' %>
     </div>
     <div class="form-group pt-5">
       <%= f.label :message, 'お問い合わせ内容' %>
-      <%= f.text_area :message, size: '10x5', class: 'form-control' %>
+      <%= f.text_area :message, size: '10x5', class: 'form-control', id: 'content4'  %>
     </div>
     
       <%# モーダル用 %>
@@ -32,13 +32,20 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
+              <h5 class="modal-title" id="exampleModalCenterTitle">送信内容</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            <div id="modal_content" class="modal-body">
-              ...
+            <div class="modal-body">
+              <ul>
+                <li id="modal_content1"></li>
+                <li id="modal_content2"></li>
+                <li id="modal_content3"></li>
+                <li id="modal_content4"></li>
+              </ul>
+              <p>---------------</p>
+              <p>上記で宜しいでしょうか</p>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>

@@ -43,8 +43,18 @@ $(document).ready(function(){
 
     $(function (){
         $("#modal_confirm").on("click", function(){
-          var content_value = $("#content").val();
-          $("#modal_content").html(content_value);
+          var acontent_value = $("#content1").val();
+          var bcontent_value = $("#content2").val();
+          var ccontent_value = $("#content3").val();
+          var dcontent_value = $("#content4").val();
+          $("#modal_content1").text(acontent_value);
+          $("#modal_content2").text(bcontent_value);
+          if(ccontent_value == true){
+            $("#modal_content3").text("trueの時の文章");
+          } else {
+            $("#modal_content3").text("falseの時の文章");
+          }
+          $("#modal_content4").text(dcontent_value);
         });
       });
 

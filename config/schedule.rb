@@ -59,7 +59,6 @@ if rails_env.to_sym != :development
     every 30.minutes do
         begin
             rake 'count_stop:delete_board', :environment_variable => "RAILS_ENV", :environment => "production"
-            rake ''
             # エラーの例外クラスが来る
         rescue => e 
             Rails.logger.error("aborted rake count_stop task")
