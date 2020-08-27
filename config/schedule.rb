@@ -49,7 +49,7 @@ if rails_env.to_sym != :development
         begin
             # 実行する時にに"RAILS_ENV"を見る様に
             rake 'delete:delete_board', :environment_variable => "RAILS_ENV", :environment => "production"
-            command "/home/ec2-user/Hobby/bash.sh"
+            command "/home/ec2-user/Hobby/log_cleaner.sh"
         rescue => e
             Rails.logger.error("aborted rake delete_board& task")
             raise e
@@ -67,13 +67,13 @@ if rails_env.to_sym != :development
     end
 
     # テスト用
-    # every 1.minutes do
-    #     begin
-    #         command "/home/ec2-user/Hobby/bash.sh"
-    #     rescue => e
-    #         Rails.logger.error("aborted rake command task")
-    #         raise e
-    #     end
-    # end
+    every 1.minutes do
+        begin
+            command "/home/ec2-user/Hobby/bash.sh"
+        rescue => e
+            Rails.logger.error("aborted rake command task")
+            raise e
+        end
+    end
 
 end

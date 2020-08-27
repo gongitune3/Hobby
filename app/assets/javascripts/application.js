@@ -43,18 +43,22 @@ $(document).ready(function(){
 
     $(function (){
         $("#modal_confirm").on("click", function(){
-          var acontent_value = $("#content1").val();
-          var bcontent_value = $("#content2").val();
-          var ccontent_value = $("#content3").val();
-          var dcontent_value = $("#content4").val();
-          $("#modal_content1").text(acontent_value);
-          $("#modal_content2").text(bcontent_value);
-          if(ccontent_value == true){
+          console.log('button が押されたよ')
+          var a_content_value = $("#content1").val();
+          var b_content_value = $("#contact_category option:selected").val();
+          var c_content_value = $("#content3:checked").val();
+          var d_content_value = $("#content4").val();
+          console.log(a_content_value, b_content_value, c_content_value, d_content_value)
+          
+          $("#modal_content1").text(a_content_value);
+          
+          $("#modal_content2").text(b_content_value);
+          if(c_content_value == 1){
             $("#modal_content3").text("trueの時の文章");
           } else {
             $("#modal_content3").text("falseの時の文章");
           }
-          $("#modal_content4").text(dcontent_value);
+          $("#modal_content4").text(d_content_value);
         });
       });
 

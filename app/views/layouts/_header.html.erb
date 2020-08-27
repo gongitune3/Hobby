@@ -31,12 +31,6 @@
                 </div>
             </li>
         </ul>
-         <ul class="mx-auto">
-          <li>
-            <%= link_to image_tag("logo.png",:width => "200",:height => "60"), root_path %>
-          </li>
-        </ul>
-      
       <% elsif admin_signed_in? %>
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
@@ -63,11 +57,7 @@
                   </div>
               </li>
         </ul>
-        <ul class="mx-auto">
-          <li>
-            <%= link_to image_tag("logo.png",:width => "200",:height => "60"), root_path %>
-          </li>
-        </ul>
+       
       <% else %>
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
@@ -94,6 +84,7 @@
                   </div>
               </li>
         </ul>
+      <% end %>
         <ul class="mx-auto">
           <% if admin_signed_in? %>
             <li>
@@ -105,7 +96,6 @@
             </li>
           <% end %>
         </ul>
-      <% end %>
       <%= form_with url: users_search_path, method: :get, local: true, class: "form-inline my-2 my-lg-0 justify-content-center" do %>
         <div class="form-inline">
           <%= text_field_tag 'search[content]', '', class: 'form-control mr-3' %>
