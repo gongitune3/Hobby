@@ -49,14 +49,19 @@ $(document).ready(function(){
           var c_content_value = $("#content3:checked").val();
           var d_content_value = $("#content4").val();
           console.log(a_content_value, b_content_value, c_content_value, d_content_value)
-          
+
           $("#modal_content1").text(a_content_value);
-          
-          $("#modal_content2").text(b_content_value);
-          if(c_content_value == 1){
-            $("#modal_content3").text("trueの時の文章");
+          if(b_content_value.to_i == 0){
+            $("#modal_content2").text("スレッド・レスについて");
+          } else if(b_content_value.to_i == 1) {
+            $("#modal_content2").text("Hobby/等アプリについて");
           } else {
-            $("#modal_content3").text("falseの時の文章");
+            $("#modal_content2").text("その他");
+          }
+          if(c_content_value == 1){
+            $("#modal_content3").text("返信希望");
+          } else {
+            $("#modal_content3").text("返信不要");
           }
           $("#modal_content4").text(d_content_value);
         });
