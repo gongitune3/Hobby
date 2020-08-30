@@ -1,7 +1,7 @@
  <div class="col-md-8">
             <table class='table'>
                 <tr>
-                    <%= attachment_image_tag user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg", class: "rounded-circle" %>
+                    <%= image_tag @image_url %>
                 </tr>
                 <tr>
                     <i>ハンドルネーム：</i><%= user.nickname %>
