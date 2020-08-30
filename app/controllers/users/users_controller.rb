@@ -4,7 +4,12 @@ class Users::UsersController < ApplicationController
 
     def show
         @user = User.find(params[:id])
-        @image_url = "https://hobby3ch-files-resize.s3-ap-northeast-1.amazonaws.com/store/" + @user.profile_image_id + "-thumbnail."
+        if @user.profile_image_id.present?
+            @image_url = "https://hobby3ch-files-resize.s3-ap-northeast-1.amazonaws.com/store/" + @user.profile_image_id + "-thumbnail."
+        else
+            @image_url = "/app/assets/images/no_image.jpg"
+        end
+
         order_comment = @user.board_comments.order(created_at: :desc).limit(3)
         @order_boards = Board.where(id: order_comment.pluck(:board_id)).distinct
 
@@ -55,6 +60,8 @@ class Users::UsersController < ApplicationController
         # end
 
         # @recommended = a
+
+        
     end
     
     def index
