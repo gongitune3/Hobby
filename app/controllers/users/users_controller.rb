@@ -4,6 +4,7 @@ class Users::UsersController < ApplicationController
 
     def show
         @user = User.find(params[:id])
+        @image_url = "https://hobby3ch-files-resize.s3-ap-northeast-1.amazonaws.com/store/" + @user.profile_image_id + "-thumbnail."
         order_comment = @user.board_comments.order(created_at: :desc).limit(3)
         @order_boards = Board.where(id: order_comment.pluck(:board_id)).distinct
 
@@ -67,6 +68,7 @@ class Users::UsersController < ApplicationController
     def update
         @user = User.find(params[:id])
         if @user.update(user_params)
+            sleep(3)
             flash.now[:notice] = '更新完了'
             redirect_to users_user_path(@user)
         else
@@ -78,7 +80,7 @@ class Users::UsersController < ApplicationController
 	  	def user_params
 		 	params.require(:user).permit(:nickname, :introduction, :profile_image)
           end
-          
+
           def screen_user
 			unless params[:id].to_i == current_user.id
 		  		redirect_to user_path(current_user)
