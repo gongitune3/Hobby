@@ -7,7 +7,8 @@ class Users::UsersController < ApplicationController
         if @user.profile_image_id.present?
             @image_url = "https://hobby3ch-files-resize.s3-ap-northeast-1.amazonaws.com/store/" + @user.profile_image_id + "-thumbnail."
         else
-            @image_url = image_path("no_image.jpg");
+            # helpers.←view側のヘルパーメソッドが使える
+            @image_url = helpers.image_path("no_image.jpg");
         end
 
         order_comment = @user.board_comments.order(created_at: :desc).limit(3)
