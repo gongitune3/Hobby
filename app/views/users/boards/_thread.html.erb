@@ -16,7 +16,8 @@
                     </td>
                     
                     <td colspan="7">
-                        <i class="mr-2"><%= @response %>:</i><%= board_comment.comment %>
+                        <i class="mr-2"><%= @response %>:</i>
+                        <i id="anker_point"><%= board_comment.comment %></i>
                     </td>
                     <td id="favorite_btn_<%= board_comment.id %>" colspan="1">
                         <%= render 'users/boards/favorite', board_comment: board_comment %>
