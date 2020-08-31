@@ -45,7 +45,7 @@ class Users::UsersController < ApplicationController
         end
         @recommended = users.uniq.shuffle.take(3)
     end
-    
+
     def index
         @users = User.page(params[:page]).reverse_order
     end
@@ -67,11 +67,11 @@ class Users::UsersController < ApplicationController
     end
 
     private
-	  	def user_params
+	    def user_params
 		 	params.require(:user).permit(:nickname, :introduction, :profile_image)
-          end
+        end
 
-          def screen_user
+        def screen_user
 			unless params[:id].to_i == current_user.id
 		  		redirect_to user_path(current_user)
             end
