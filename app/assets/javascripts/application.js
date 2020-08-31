@@ -67,6 +67,30 @@ $(document).ready(function(){
         });
       });
 
+      $('#anchor_target').each(function() {
+        //文字列を置換し変数に格納
+        var anchor = $(this).text().replace(/<<[0-9]{1,4}/g, '<a herf="#飛びたいhtmlのi"><<すうじ</a>');
+        //上記で格納した文字列で上書き
+        $(this).text(anchor);
+      });
+
+      $(function(){
+        // モーダルウィンドウが開くときの処理    
+        $(".modalOpen").click(function(){
+            var navClass = $(this).attr("class"),
+                href = $(this).attr("href");
+                $(href).fadeIn();
+            $(this).addClass("open");
+            return false;
+        });
+        // モーダルウィンドウが閉じるときの処理    
+        $(".modalClose").click(function(){
+            $(this).parents(".modal").fadeOut();
+            $(".modalOpen").removeClass("open");
+            return false;
+        });  
+            
+        });
 });
 
 
