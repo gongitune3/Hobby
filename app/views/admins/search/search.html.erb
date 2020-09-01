@@ -1,0 +1,16 @@
+<% if @model == 'user' %>
+    <div class="row">
+        <h3>ユーザー検索結果 '<%= @content %>'</h3>
+        <%= render 'admins/users/index', users: @records %>
+    </div>
+<% elsif @model == 'board' %>
+    <div class="row">
+        <h3>スレッド検索結果 '<%= @content %>'</h3>
+        <%= render 'admins/boards/list', boards: @records %>
+    </div>
+<% elsif @model == 'tag' %>
+    <div class="row">
+        <h3>タグ検索結果 '<%= @content %>'</h3>
+        <%= render 'admins/tags/list', tags: @records %>
+    </div>
+<% end %>
