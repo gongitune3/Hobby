@@ -96,13 +96,24 @@
             </li>
           <% end %>
         </ul>
-      <%= form_with url: users_search_path, method: :get, local: true, class: "form-inline my-2 my-lg-0 justify-content-center" do %>
-        <div class="form-inline">
-          <%= text_field_tag 'search[content]', '', class: 'form-control mr-3' %>
-          <%= select_tag 'search[model]', options_for_select({ "User" => "user", "スレッド" => "board", "tag" => "tag" }), class: "custom-select" %>
-          <%= select_tag 'search[method]', options_for_select({ "完全一致" => "perfect", "前方一致" => "forward", "後方一致" => "backward", "部分一致" => "partial" }), class: "custom-select" %>
-          <%= submit_tag '検索', class: "btn btn-default" %>
-        </div>
+      <% if admin_signed_in? %>
+        <%= form_with url: admins_search_path, method: :get, local: true, class: "form-inline my-2 my-lg-0 justify-content-center" do %>
+          <div class="form-inline">
+            <%= text_field_tag 'search[content]', '', class: 'form-control mr-3' %>
+            <%= select_tag 'search[model]', options_for_select({ "User" => "user", "スレッド" => "board", "tag" => "tag" }), class: "custom-select" %>
+            <%= select_tag 'search[method]', options_for_select({ "完全一致" => "perfect", "前方一致" => "forward", "後方一致" => "backward", "部分一致" => "partial" }), class: "custom-select" %>
+            <%= submit_tag '検索', class: "btn btn-default" %>
+          </div>
+        <% end %>
+      <% else %>
+        <%= form_with url: users_search_path, method: :get, local: true, class: "form-inline my-2 my-lg-0 justify-content-center" do %>
+          <div class="form-inline">
+            <%= text_field_tag 'search[content]', '', class: 'form-control mr-3' %>
+            <%= select_tag 'search[model]', options_for_select({ "User" => "user", "スレッド" => "board", "tag" => "tag" }), class: "custom-select" %>
+            <%= select_tag 'search[method]', options_for_select({ "完全一致" => "perfect", "前方一致" => "forward", "後方一致" => "backward", "部分一致" => "partial" }), class: "custom-select" %>
+            <%= submit_tag '検索', class: "btn btn-default" %>
+          </div>
+        <% end %>
       <% end %>
   </div>
 </nav>

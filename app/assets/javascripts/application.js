@@ -67,12 +67,12 @@ $(document).ready(function(){
         });
       });
 
-      $('#anchor_point').each(function() {
-        //文字列を置換し変数に格納
-        var anchor = $(this).text().replace(/\>\>\s*([0-9]{1,4}), '<a href="#$1">&gt;&gt;$1</a>');
-        //上記で格納した文字列で上書き
-        $(this).text(anchor);
-      });
+      // $('#anchor_point').each(function() {
+      //   //文字列を置換し変数に格納
+      //   var anchor = $(this).text().replace(/\>\>\s*([0-9]{1,4}), '<a href="#$1">&gt;&gt;$1</a>');
+      //   //上記で格納した文字列で上書き
+      //   $(this).text(anchor);
+      // });
 
       $(function(){
         // モーダルウィンドウが開くときの処理    
