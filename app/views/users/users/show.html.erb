@@ -28,7 +28,11 @@
                                 <% else %>
                                     <% @recommended.each do |user| %>
                                                 <%= link_to users_user_path(user.id) do %>
-                                                    <%= attachment_image_tag user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg", size: "50x50", class: "rounded-circle" %>
+                                                    <% if Rails.env == 'development' %>
+                                                        <%= attachment_image_tag user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg", size: "50x50", class: "rounded-circle" %>
+                                                    <% else %>
+                                                        <%= image_tag image_url, :size =>'80x80', class: "rounded-circle"  %>
+                                                    <% end %>
                                                     <%= user.nickname %>
                                                 <% end %>
                                     <% end %>
