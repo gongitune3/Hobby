@@ -5,10 +5,9 @@ class Admins::SearchController < ApplicationController
             @content = params["search"]["content"]
             @method = params["search"]["method"]
             @records = search_for(@model, @content, @method)
-        end
-        
-          private
-          def search_for(model, content, method)
+      end
+      private
+      def search_for(model, content, method)
             if model == 'user'
               User.all.perfect_search(content, method)
                       .forward_search(content, method)
@@ -35,18 +34,5 @@ class Admins::SearchController < ApplicationController
                 Tag.where('name LIKE ?', '%'+content+'%')
               end
             end
-            # elsif model == 'tag'
-            #   if method == 'perfect'
-            #     Tag.where(name: content)
-            #   elsif method == 'forward'
-            #     Tag.where('name LIKE ?', content+'%')
-            #   elsif method == 'backward'
-            #     Tag.where('name LIKE ?', '%'+content)
-            #   else
-            #     Tag.where('name LIKE ?', '%'+content+'%')
-            #   end
-            # end
-          end
-    end
-
+      end
 end
