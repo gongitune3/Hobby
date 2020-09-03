@@ -33,7 +33,7 @@ Rails.application.routes.draw do
     end
     resource :board_tags, only: [:create,:destroy]
     resources :tags
-    get 'search/search'
+    get 'search' => 'search#search', as: 'search'
   end
 
   # ユーザー側
