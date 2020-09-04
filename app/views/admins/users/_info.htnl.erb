@@ -1,0 +1,32 @@
+<div class="col-md-8">
+      <table class='table'>
+          <tr>
+              <% if Rails.env == 'development' %>
+                  <%= attachment_image_tag user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg", size: "50x50", class: "rounded-circle" %>
+              <% else %>
+                  <%= image_tag image_url, :size =>'80x80', class: "rounded-circle"  %>
+              <% end %>
+          </tr>
+          <tr>
+              <i>ハンドルネーム：</i><%= user.nickname %>
+          </tr>
+          <tr>
+              <p class="mt-3 ml-3">/自己紹介/</p>
+              <p class="ml-3"><%= user.introduction %></p>
+          </tr>
+          <tr>
+              <th>follows</th>
+              <th><%= link_to user.follower.count, admins_user_follows_path(user) %></th>
+          </tr>
+          <tr>
+              <th>followers</th>
+              <th><%= link_to user.followed.count, admins_user_followers_path(user) %></th>
+          </tr>
+          <tr>
+              <th>bookmarks</th>
+              <th><%= link_to user.bookmarks.count, admins_bookmarks_path(user) %></th>
+          </tr>
+      </table>
+</div>
+      <%# 強制削除、＋通告ボタンを用意しておく %>
+<div class="fix"></div>
