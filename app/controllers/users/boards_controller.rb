@@ -34,7 +34,6 @@ class Users::BoardsController < ApplicationController
 
     def create
         @board = current_user.boards.build(board_params)
-        
         # do |board|
         tags = params[:board][:tag_list][:name].split(",")
         #     tags.each do |tag|
