@@ -44,6 +44,12 @@ class Users::UsersController < ApplicationController
             users << board_comment.user
         end
         @recommended = users.uniq.shuffle.take(3)
+        if @user.profile_image_id.present?
+            @image_url = "https://hobby3ch-files-resize.s3-ap-northeast-1.amazonaws.com/store/" + @user.profile_image_id + "-thumbnail."
+        else
+            # helpers.←view側のヘルパーメソッドが使える
+            @image_url = helpers.image_path("no_image.jpg");
+        end
     end
 
     def index
