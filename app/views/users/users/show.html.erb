@@ -31,7 +31,7 @@
                                                     <% if Rails.env == 'development' %>
                                                         <%= attachment_image_tag user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg", size: "50x50", class: "rounded-circle" %>
                                                     <% else %>
-                                                        <%= image_tag image_url, :size =>'80x80', class: "rounded-circle"  %>
+                                                        <%= image_tag @image_url, :size =>'80x80', class: "rounded-circle"  %>
                                                     <% end %>
                                                     <%= user.nickname %>
                                                 <% end %>
