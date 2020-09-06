@@ -5,7 +5,6 @@ class Users::BoardCommentsController < ApplicationController
         @board_new = Board.new
         @board_comment = @board.board_comments.new(board_comment_params)
         @board_comment.user_id = current_user.id
-        # board  @board_comment.comment.match
         unless @board_comment.save
             @board_comment = BoardComment.new
             @board_comments = @board.board_comments
