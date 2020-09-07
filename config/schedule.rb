@@ -67,13 +67,13 @@ if rails_env.to_sym != :development
     end
 
     # テスト用
-    every 1.minutes do
-        begin
-            command "/home/ec2-user/Hobby/bash.sh"
-        rescue => e
-            Rails.logger.error("aborted rake command task")
-            raise e
-        end
-    end
+    # every 1.minutes do
+    #     begin
+    #         command "/home/ec2-user/Hobby/bash.sh"
+    #     rescue => e
+    #         Rails.logger.error("aborted rake command task")
+    #         raise e
+    #     end
+    # end
 
 end
