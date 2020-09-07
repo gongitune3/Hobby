@@ -78,9 +78,13 @@
     <div class="row">
         <%= render '/layouts/errors', obj: @board_comment %>
         <% if user_signed_in? %>
-            <%= form_with model:[@board, @board_comment], url: users_board_board_comments_path(@board.id), remote: true, method: :post, class: "pl-5" do |f| %>
-                <%= f.text_area :comment, size: "60x4", class: "mt-5", id: "abcde", placeholder: "空欄ではコメントできません。また100文字以内の投稿を..." %>
-                <%= f.submit '投稿' %>
+            <% if @board.board_commnets.count >= 20 %>
+                <p>レス上限に達しております。。次スレを立てるなどお願い致します。。</p>
+            <% else %>
+                <%= form_with model:[@board, @board_comment], url: users_board_board_comments_path(@board.id), remote: true, method: :post, class: "pl-5" do |f| %>
+                    <%= f.text_area :comment, size: "60x4", class: "mt-5", id: "abcde", placeholder: "空欄ではコメントできません。また100文字以内の投稿を..." %>
+                    <%= f.submit '投稿' %>
+                <% end %>
             <% end %>
         <% end %>
     </div>

@@ -47,13 +47,13 @@ class Users::BoardsController < ApplicationController
         end
         if  @board.save
             @board.save_tags(tags)
-            flash[:success] = "記事を作成しました"
+            flash[:success] = "スレッドを作成しました"
             redirect_to users_board_path(@board.id)
         else
-          # @board = current_user.boards.build(board_params)
-          render 'users/boards/new'
+            # @board = current_user.boards.build(board_params)
+            render 'users/boards/new'
         end
-      end
+    end
       
       def edit
         @board= Board.find(params[:id])

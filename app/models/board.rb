@@ -11,7 +11,7 @@ class Board < ApplicationRecord
     # 多対多のバリデーション用メソッド
     validates :title,uniqueness: { case_sensitive: :false }, presence: true, length: { maximum: 33 } 
     validates :introduction, presence: true, length: { maximum: 53 }
-    # validate :tag_holdings
+    # validate :tag_holdings→他で使用しているメソッドと相性が悪いた為、休止中。
     validate :board_holdings
 
 
@@ -65,9 +65,14 @@ class Board < ApplicationRecord
     # end
     private 
     def board_holdings
-      # コントローラーで定義している為、bulidでcurrent_userを使用している為、currentは不要、userで取得可能。
+      # コントローラーで定義している→、bulidでcurrent_userを使用している為、currentは不要、userで取得可能。
       if user.boards.count >= 5
         errors.add(:_e_, "スレッドは５個まででお願い致します")
       end
     end
+
+    def board_comments_retention
+      
+    end
+    
 end
