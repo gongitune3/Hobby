@@ -6,7 +6,19 @@
 <div class="row">
     <div class="col-8 offset-2">
         <p>こちらは某掲示板を意識して作っております。<br>
-        レスが一定期間ないスレッドの削除、<br>
-        コメント上限に達したスレッドは30分〜１時間後には削除等々。。</p>
+        何か質問があれば、下記の項目をご覧ください。<br>
+        解決しない場合はこちらまの<%= link_to "問合せフォーム", users_contacts_new_path %>の利用も検討してください。</p>
+    </div>
+    <h3>よくある質問</h3>
+    <a data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+        スレッドが消えている<%#（aタグ) %>
+    </a>
+    <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+        スレッドが消えている<%#（buttonタグ) %>
+    </button>
+    <div class="collapse" id="collapseExample">
+        <div class="border p-3">
+        表示されました！
+        </div>
     </div>
 </div>
