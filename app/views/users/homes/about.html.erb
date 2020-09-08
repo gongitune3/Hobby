@@ -12,15 +12,26 @@
 </div>
 <div class="row">
     <div class="col-8 offset-3">
-        <h3>よくある質問</h3>
-        <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+        <h3 class="mt-3">よくある質問</h3>
+        <button type="button" class="btn btn-muted mt-2" data-toggle="collapse" data-target="#coll_Example_board_delete" aria-expanded="false" aria-controls="coll_Example_board_delete">
             スレッドが消えている<%#（buttonタグ) %>
         </button>
-        <div class="collapse" id="collapseExample">
+        <div class="collapse" id="coll_Example_board_delete">
             <div class="border p-3">
             ・スレッドのコメント上限に達した（）<br>
-            ・スレッドに一定期間レスがない（最後のレスから１週間経過、）
+            ・スレッドに一定期間レスがない（最後のレスから１週間経過）<br>
+            上記の理由、もしくは管理人が不適切と判断した場合は削除させて頂いております。
+            </div>
+</div>
+        </div>
+        <button type="button" class="btn btn-muted mt-2" data-toggle="collapse" data-target="#coll_Example_limit" aria-expanded="false" aria-controls="coll_Example_limit">
+            諸々の上限について
+        </button>
+        <div class="collapse" id="coll_Example_limit">
+            <div class="border p-3">
+            ・１人のユーザーが同時に保持できるスレッドは５個が限度です。<br>
+            ・スレッドに一定期間レスがない（最後のレスから１週間経過）<br>
+            上記の理由、もしくは管理人が不適切と判断した場合は削除させて頂いております。
             </div>
         </div>
     </div>
-</div>
