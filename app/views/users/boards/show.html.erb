@@ -78,7 +78,7 @@
     <div class="row">
         <%= render '/layouts/errors', obj: @board_comment %>
         <% if user_signed_in? %>
-            <% if @board.board_comments.count >= 20 %>
+            <% if @board.board_comments.count >= 300 %>
                 <p class="text-danger p-4">レス上限に達しております。。次スレを立てるなどお願い致します。。</p>
             <% else %>
                 <%= form_with model:[@board, @board_comment], url: users_board_board_comments_path(@board.id), remote: true, method: :post, class: "pl-5" do |f| %>
