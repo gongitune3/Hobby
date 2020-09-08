@@ -31,6 +31,7 @@
   https://drive.google.com/file/d/17Jr0kJs2j25_b-9JMAUYPPcwuHA77J78/view?usp=sharing
 
   インフラ（AWS）設計図
+  https://app.diagrams.net/#G1RmX7UsYAMS5cUM5xU4f4PFvSU-mmnd9h
 
 ### 機能一覧
   <https://docs.google.com/spreadsheets/d/1Y0qoizWCRv3C8bXC7tqjsVSfoV2NiRMpANreVnQrZEc/edit#gid=0>
