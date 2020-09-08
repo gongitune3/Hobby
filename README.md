@@ -35,5 +35,3 @@
 
 ### 機能一覧
   <https://docs.google.com/spreadsheets/d/1Y0qoizWCRv3C8bXC7tqjsVSfoV2NiRMpANreVnQrZEc/edit#gid=0>
-
-
