@@ -34,4 +34,4 @@
     <https://app.diagrams.net/#G1RmX7UsYAMS5cUM5xU4f4PFvSU-mmnd9h>
 
 ### 機能一覧
-  <https://docs.google.com/spreadsheets/d/1Y0qoizWCRv3C8bXC7tqjsVSfoV2NiRMpANreVnQrZEc/edit#gid=0>
+  <https://docs.google.com/spreadsheets/d/15YnsZ5TaVIE6txixOGdKj4T8BNCk6Ancza5EPa6MDB0/edit#gid=0>
