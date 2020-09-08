@@ -32,12 +32,6 @@
 
   <https://docs.google.com/spreadsheets/d/1Xuev5iGCqF1bQ7JmOAb_sdpgEr6C_ZoeXng6ZPWgeUI/edit#gid=2007891421>
 
-  詳細設計
-  <https://docs.google.com/spreadsheets/d/124puX4AHwNPCo-yCHJb7QBf9wNnZg1R_P_oX3mDCuEE/edit?usp=sharing>
-
-  ER図
-  <https://app.diagrams.net/#G1uqV5_yiVZtpzNGU8qcpUFeNaV1V-ZKFs>
-
 ### 機能一覧
   <https://docs.google.com/spreadsheets/d/1Y0qoizWCRv3C8bXC7tqjsVSfoV2NiRMpANreVnQrZEc/edit#gid=0>
 
