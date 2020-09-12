@@ -113,3 +113,8 @@ $(document).ready(function(){
 //     }, 500);
 //     return false;
 // });
+
+$('.to-top').click(function(){
+  $('body,html').animate({scrollTop:0},700);
+  return false;
+  });
