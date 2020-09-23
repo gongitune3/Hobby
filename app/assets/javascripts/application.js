@@ -43,7 +43,7 @@ $(document).ready(function(){
 
     $(function (){
         $("#modal_confirm").on("click", function(){
-          console.log('button が押されたよ')
+          // console.log('button が押されたよ')
           var a_content_value = $("#content1").val();
           var b_content_value = $("#contact_category option:selected").val();
           var c_content_value = $("#content3:checked").val();
