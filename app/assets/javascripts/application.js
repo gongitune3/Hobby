@@ -114,7 +114,9 @@ $(document).ready(function(){
 //     return false;
 // });
 
+//レスフォームの横に配置、一番上までジャンプするボタン
 $('.to-top').click(function(){
   $('body,html').animate({scrollTop:0},700);
   return false;
   });
+
