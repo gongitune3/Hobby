@@ -20,8 +20,8 @@
                     <%= link_to users_user_path(@board.user.id) do %>
                         <%= @board.user.nickname %>
                     <% end %>
-                          <div class="row">
-                            <% if @board.user_id == current_user.id %>
+                        <% if @board.user_id == current_user.id %>
+                            <div class="row">
                                 <div class="col-5 mt-4">
                                     <button type="button" class="btn btn-danger ml-2" data-toggle="modal" data-target="#modal1">
                                         スレッド削除
@@ -50,8 +50,8 @@
                                             </div>
                                         </div>
                                 </div>
-                            <% end %>
-                        </div>
+                            </div>
+                        <% end %>
 
                 </div>
                 <%# 一番したにスクロール %>
