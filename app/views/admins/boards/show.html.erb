@@ -21,15 +21,15 @@
                         <%if admin_signed_in? %>
                             <div class="row">
                                 <div class="col-5 mt-4">
-                                    <button type="button" class="btn btn-danger ml-2" data-toggle="modal" data-target="#modal1">
+                                    <button type="button" class="btn btn-danger ml-2" data-toggle="modal" data-target="#modal_admins">
                                         スレッド削除
                                     </button>
-                                        <div class="modal fade" id="modal_user" tabindex="-1"
-                                            role="dialog" aria-labelledby="label1" aria-hidden="true">
+                                        <div class="modal fade" id="modal_admins" tabindex="-1"
+                                            role="dialog" aria-labelledby="label_admins" aria-hidden="true">
                                             <div class="modal-dialog" role="document">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title" id="label1">スレッドを削除しますか？</h5>
+                                                        <h5 class="modal-title" id="label_admins">スレッドを削除しますか？</h5>
                                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                             <span aria-hidden="true">&times;</span>
                                                         </button>
@@ -40,7 +40,9 @@
                                                         宜しければ下記の削除のボタンをクリックしてください。
                                                     </div>
                                                     <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">キャンセル</button>
+                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                                            キャンセル
+                                                        </button>
                                                         <%= link_to admins_board_path(@board.id), method: :delete do %>
                                                             <button type="button" class="btn btn-danger">削除</button>
                                                         <% end %>
