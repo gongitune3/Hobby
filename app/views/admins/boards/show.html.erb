@@ -15,7 +15,7 @@
                         <%= link_to tag.name, admins_tags_path(tag: tag.name) %>
                     <% end %>
                     <i class="ml-2">スレッド作成者:</i>
-                    <%= link_to admins_user_path(@board.user) do %>
+                    <%= link_to admins_user_path(@board.user.id) do %>
                         <%= @board.user.nickname %>
                     <% end %>
                         <%if admin_signed_in? %>
