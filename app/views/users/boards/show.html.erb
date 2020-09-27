@@ -21,7 +21,7 @@
                         <%= @board.user.nickname %>
                     <% end %>
                         <div class="row">
-                            <% if @board.user_id %>
+                            <% if @board.user_id == current_user.id %>
                                 <div class="col-5 mt-4">
                                     <button type="button" class="btn btn-danger ml-2" data-toggle="modal" data-target="#modal1">
                                         スレッド削除
@@ -38,7 +38,6 @@
                                                     </div>
                                                     <div class="modal-body">
                                                         スレッドを削除しますと、復元ができません。<br>
-                                                        ユーザーへの通告ないしは、規約に促しているでしょうか？<br>
                                                         宜しければ下記の削除のボタンをクリックしてください。
                                                     </div>
                                                     <div class="modal-footer">
