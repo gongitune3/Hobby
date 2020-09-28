@@ -91,14 +91,21 @@ $(document).ready(function(){
         });  
             
         });
+
+        //レスフォームの横に配置、一番上までジャンプするボタン
+        $('.to-top').click(function(){
+          $('body,html').animate({scrollTop:0},700);
+            return false;
+        });
+
+        //スレタイ横に配置、一番下までジャンプ
+      //   $(function(){
+      //     $('#page_bottom').click(function () {
+      //         //id名#page_bottomがクリックされたら、実行される処理を記述
+      //         $("html,body").animate({:0},"300");
+      //     });
+      // });
 });
 
 
 
-//レスフォームの横に配置、一番上までジャンプするボタン
-$('.to-top').click(function(){
-  $('body,html').animate({scrollTop:0},700);
-  return false;
-  });
-
-//スレタイ横に配置、一番下までジャンプ
