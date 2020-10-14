@@ -2,7 +2,6 @@
         <% @response = 1%>
         <% board_comments.each do |board_comment, i| %>
             <%#コメントが空もしくは上限を超える場合、エラーを起こさない為に必要。board_commentがnillで飛ぶ為エラーが出る。%>
-            
             <% if !board_comment.id.nil?  %>
                 <tr id="comment_delete<%= board_comment.id %>" scope="row">
                     <td colspan="1">
