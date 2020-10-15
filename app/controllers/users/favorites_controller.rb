@@ -11,7 +11,6 @@ class Users::FavoritesController < ApplicationController
         favorite = current_user.favorites.find_by(board_comment_id: params[:board_comment_id])
         favorite.destroy
     end
-    
     #使用を考え中
     # private
     #     def redirect
