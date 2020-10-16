@@ -5,12 +5,13 @@ class Users::FavoritesController < ApplicationController
         favorite = @board_comment.favorites.new(user_id: current_user.id)
         favorite.save
     end
-    
+
     def destroy
         @board_comment = BoardComment.find(params[:board_comment_id])
         favorite = current_user.favorites.find_by(board_comment_id: params[:board_comment_id])
         favorite.destroy
     end
+
     #使用を考え中
     # private
     #     def redirect
@@ -21,4 +22,5 @@ class Users::FavoritesController < ApplicationController
     #         redirect_to _path
     #     end
     # end
+
 end
