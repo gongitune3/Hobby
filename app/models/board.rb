@@ -72,7 +72,7 @@ class Board < ApplicationRecord
     end
 
     def board_comments_retention
-      
+
     end
-    
+
 end
