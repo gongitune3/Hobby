@@ -6,7 +6,7 @@ class Users::BoardsController < ApplicationController
         @board = Board.new
         @board.tags.build
     end
-    
+
     def index
         @boards = Board.page(params[:page]).reverse_order.includes(:user)
     end
@@ -26,7 +26,7 @@ class Users::BoardsController < ApplicationController
     def show
         @board = Board.find(params[:id])
         @board_comment = BoardComment.new
-	    @board_comments = @board.board_comments
+        @board_comments = @board.board_comments
         @boards = Board.all
         @tags = @board.tags
         # @users = @board.board_comments.users
