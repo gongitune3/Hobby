@@ -1,4 +1,5 @@
 class Users::BookmarksController < ApplicationController
+
     def create
         @board = Board.find(params[:board_id])
         bookmark = current_user.bookmarks.build(board_id: params[:board_id])
