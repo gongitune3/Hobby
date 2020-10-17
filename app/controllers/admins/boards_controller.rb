@@ -18,9 +18,9 @@ class Admins::BoardsController < ApplicationController
       def destroy
             board = Board.find(params[:id])
             if board.destroy
-               redirect_to admins_boards_path
+                  redirect_to admins_boards_path
             else
-               redirect_back(fallback_location: root_path)
+                  redirect_back(fallback_location: root_path)
             end
       end
 
