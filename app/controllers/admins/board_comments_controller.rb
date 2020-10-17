@@ -7,4 +7,5 @@ class Admins::BoardCommentsController < ApplicationController
 
       def create
       end
+
 end
