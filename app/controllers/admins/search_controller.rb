@@ -6,6 +6,7 @@ class Admins::SearchController < ApplicationController
             @method = params["search"]["method"]
             @records = search_for(@model, @content, @method)
       end
+
       private
       def search_for(model, content, method)
             if model == 'user'
