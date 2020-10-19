@@ -14,7 +14,7 @@ class Users::BoardCommentsController < ApplicationController
             redirect_to users_board_path(params[:board_id])
         end
     end
-    
+
     def destroy
         @board_comment = BoardComment.find(params[:id])
         @board = Board.find(@board_comment.board.id)
