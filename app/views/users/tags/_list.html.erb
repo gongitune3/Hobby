@@ -6,7 +6,7 @@
                 <% tag.boards.each do |board| %>
                     <tr>
                         <td>
-                            <%= link_to board.title, users_board_path(board.id) %>
+                            <%=  board.title, users_board_path(board.id) %>
                         </td>
                         <td>
                             <% board.tags.each do |tag| %>
